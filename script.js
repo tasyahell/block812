@@ -4,7 +4,7 @@ const nav = document.querySelector('.nav');
 if (menuBtn && nav) {
   menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
 }
-const revealNodes = document.querySelectorAll('.section, .card, .feature, .service-card, .price-card, .news-card, .photo-card, .footer, .cta');
+const revealNodes = document.querySelectorAll('.section, .card, .feature, .service-card, .price-card, .news-card, .photo-card, .footer, .cta, .link-card, .booking-card, .mini-card, .photo-real');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
