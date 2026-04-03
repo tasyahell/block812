@@ -406,13 +406,14 @@ p{line-height:1.7}
 .about-block812-track{
   display:flex;
   flex-wrap:nowrap;
-  gap:18px;
+  gap:14px;
   width:max-content;
+  align-items:flex-start;
 }
 
 .about-photo-card{
-  width:78vw;
-  max-width:340px;
+  width:62vw;
+  max-width:240px;
   flex:0 0 auto;
   border-radius:20px;
   overflow:hidden;
@@ -422,7 +423,7 @@ p{line-height:1.7}
 
 .about-photo-card img{
   width:100%;
-  aspect-ratio:4 / 5;
+  aspect-ratio:3 / 4;
   object-fit:cover;
   object-position:center;
   display:block;
