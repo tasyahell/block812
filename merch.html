@@ -1,325 +1,132 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BLOCK812 Merch</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLOCK812 Merch</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0b12;
+  color:white;
+}
+
+.container{
+  padding:20px;
+}
+
+.merch-grid{
+  display:grid;
+  gap:20px;
+}
+
+.merch-card{
+  background:#111;
+  border-radius:20px;
+  padding:16px;
+  box-shadow:0 0 40px rgba(255,0,150,.1);
+}
+
+.merch-card img{
+  width:100%;
+  border-radius:16px;
+}
+
+.merch-card h3{
+  margin:10px 0 5px;
+}
+
+.price{
+  color:#ff5fd0;
+}
+
+.btn{
+  margin-top:10px;
+  padding:12px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(90deg,#ff4d6d,#c77dff);
+  color:white;
+  cursor:pointer;
+}
+
+.size-row{
+  margin-top:10px;
+}
+
+.size-chip{
+  display:inline-block;
+  padding:6px 12px;
+  margin:4px;
+  border-radius:999px;
+  background:#222;
+  cursor:pointer;
+}
+
+.size-chip.active{
+  background:#ff4d6d;
+}
+</style>
 </head>
+
 <body>
-  <header class="header">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">812</span>
-      <span>
-        <span class="brand-title">BLOCK812</span><br>
-        <span class="brand-subtitle">движ • автосервис • магазин • тату</span>
-      </span>
-    </a>
-    <nav class="nav">
-      <a href="index.html">Главная</a>
-      <a href="service.html">Автосервис</a>
-      <a href="shop.html">Магазин</a>
-      <a href="tattoo.html">Тату</a>
-    </nav>
-    <button class="menu-btn" aria-label="Меню">☰</button>
-  </header>
 
-  <main class="container">
-    <section class="page-hero section">
-      <div class="card">
-        <p class="eyebrow">BLOCK812 / MERCH</p>
-        <h1>Каталог <span class="gradient-text">мерча</span></h1>
-        <p class="lead">Футболки BLOCK812 в формате предзаказа. Срок изготовления — до 5 дней.</p>
-        <div class="subnav">
-          <a href="shop.html">← Назад в магазин</a>
-          <a href="cart.html">Открыть корзину</a>
-        </div>
-      </div>
-    </section>
+<div class="container">
 
-    <section class="section">
-      <p class="eyebrow">КОЛЛЕКЦИЯ</p>
-      <h2>Три футболки в каталоге</h2>
+<h2>Каталог</h2>
 
-    <div class="merch-grid" style="margin-top:28px">
+<div class="merch-grid">
 
-  <!-- ВАЗ 2105 -->
-  <article class="merch-card">
-    <div class="merch-slider">
-      <button class="slider-btn prev" type="button">‹</button>
+<div class="merch-card">
+<img src="vaz2105-1 2.PNG">
+<h3>ВАЗ 2105</h3>
+<div class="price">3 500 ₽</div>
 
-      <div class="slider-track">
-        <img src="vaz2105-0 2.PNG" alt="ВАЗ 2105 фото 1" class="merch-slide active">
-        <img src="vaz2105-1 2.PNG" alt="ВАЗ 2105 фото 2" class="merch-slide">
-      </div>
+<button class="btn">Купить</button>
 
-      <button class="slider-btn next" type="button">›</button>
+<div class="size-row">
+<span class="size-chip">S</span>
+<span class="size-chip">M</span>
+<span class="size-chip">L</span>
+<span class="size-chip">XL</span>
+</div>
+</div>
 
-      <div class="slider-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
+<div class="merch-card">
+<img src="vaz2102-0 2.PNG">
+<h3>ВАЗ 2102</h3>
+<div class="price">3 500 ₽</div>
 
-    <div class="merch-body">
-      <div class="merch-topline">
-        <span class="product-badge">Предзаказ</span>
-        <span class="product-badge">до 5 дней</span>
-      </div>
+<button class="btn">Купить</button>
 
-      <h3>ВАЗ 2105</h3>
-      <p class="merch-price">3 500 ₽</p>
-      <p class="merch-note">Футболка с авторским принтом ВАЗ 2105.</p>
+<div class="size-row">
+<span class="size-chip">S</span>
+<span class="size-chip">M</span>
+<span class="size-chip">L</span>
+<span class="size-chip">XL</span>
+</div>
+</div>
 
-      <div class="merch-desc-hidden">
-        Фрагмент улицы, застывший в металле.<br>
-        Эстетика повседневности, превращённая в графику.<br><br>
-        Лимитированный дроп BLOCK812.<br><br>
-        Предзаказ. Производство до 5 дней.
-      </div>
+<div class="merch-card">
+<img src="vaz2101-0 2.PNG">
+<h3>ВАЗ 2101</h3>
+<div class="price">3 500 ₽</div>
 
-      <div class="buy-panel">
-        <button class="btn merch-btn" type="button" onclick="toggleBuyPanel(this, event)">Купить</button>
+<button class="btn">Купить</button>
 
-        <div class="buy-popup">
-          <div class="size-row">
-            <span class="size-title">Выбери размер</span>
-            <div class="size-options">
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
-            </div>
-          </div>
-
-          <div class="buy-popup-actions">
-            <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
-          </div>
-
-          <div class="after-size-actions">
-            <a class="btn merch-btn" href="cart.html" onclick="event.stopPropagation()">В корзину</a>
-            <button class="btn merch-btn secondary-btn" type="button" onclick="closeBuyPanel(this, event)">Продолжить покупки</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- ВАЗ 2102 -->
-  <article class="merch-card">
-    <div class="merch-slider">
-      <button class="slider-btn prev" type="button">‹</button>
-
-      <div class="slider-track">
-        <img src="vaz2102-0 2.PNG" alt="ВАЗ 2102 фото 1" class="merch-slide active">
-        <img src="vaz2102-1 2.PNG" alt="ВАЗ 2102 фото 2" class="merch-slide">
-        <img src="vaz2102-2 2.PNG" alt="ВАЗ 2102 фото 3" class="merch-slide">
-      </div>
-
-      <button class="slider-btn next" type="button">›</button>
-
-      <div class="slider-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-
-    <div class="merch-body">
-      <div class="merch-topline">
-        <span class="product-badge">Предзаказ</span>
-        <span class="product-badge">до 5 дней</span>
-      </div>
-
-      <h3>ВАЗ 2102</h3>
-      <p class="merch-price">3 500 ₽</p>
-      <p class="merch-note">Футболка с авторским принтом ВАЗ 2102.</p>
-
-      <div class="merch-desc-hidden">
-        Движение, которое не заканчивается.<br>
-        Старые формы — новое восприятие.<br><br>
-        Фрагмент из жизни города в ткани.<br><br>
-        Предзаказ. Производство до 5 дней.
-      </div>
-
-      <div class="buy-panel">
-        <button class="btn merch-btn" type="button" onclick="toggleBuyPanel(this, event)">Купить</button>
-
-        <div class="buy-popup">
-          <div class="size-row">
-            <span class="size-title">Выбери размер</span>
-            <div class="size-options">
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
-            </div>
-          </div>
-
-          <div class="buy-popup-actions">
-            <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
-          </div>
-
-          <div class="after-size-actions">
-            <a class="btn merch-btn" href="cart.html" onclick="event.stopPropagation()">В корзину</a>
-            <button class="btn merch-btn secondary-btn" type="button" onclick="closeBuyPanel(this, event)">Продолжить покупки</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- ВАЗ 2101 -->
-  <article class="merch-card">
-    <div class="merch-slider">
-      <button class="slider-btn prev" type="button">‹</button>
-
-      <div class="slider-track">
-        <img src="vaz2101-0 2.PNG" alt="ВАЗ 2101 фото 1" class="merch-slide active">
-        <img src="vaz2101-1 2.PNG" alt="ВАЗ 2101 фото 2" class="merch-slide">
-        <img src="vaz2101-2 2.PNG" alt="ВАЗ 2101 фото 3" class="merch-slide">
-      </div>
-
-      <button class="slider-btn next" type="button">‹</button>
-
-      <div class="slider-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-
-    <div class="merch-body">
-      <div class="merch-topline">
-        <span class="product-badge">Предзаказ</span>
-        <span class="product-badge">до 5 дней</span>
-      </div>
-
-      <h3>ВАЗ 2101</h3>
-      <p class="merch-price">3 500 ₽</p>
-      <p class="merch-note">Футболка с авторским принтом ВАЗ 2101.</p>
-
-      <div class="merch-desc-hidden">
-        Классика, которая не устаревает.<br>
-        Символ, разобранный на детали и собранный заново.<br><br>
-        BLOCK812 — это не про машины, это про состояние.<br><br>
-        Предзаказ. Производство до 5 дней.
-      </div>
-
-      <div class="buy-panel">
-        <button class="btn merch-btn" type="button" onclick="toggleBuyPanel(this, event)">Купить</button>
-
-        <div class="buy-popup">
-          <div class="size-row">
-            <span class="size-title">Выбери размер</span>
-            <div class="size-options">
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
-              <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
-            </div>
-          </div>
-
-          <div class="buy-popup-actions">
-            <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
-          </div>
-
-          <div class="after-size-actions">
-            <a class="btn merch-btn" href="cart.html" onclick="event.stopPropagation()">В корзину</a>
-            <button class="btn merch-btn secondary-btn" type="button" onclick="closeBuyPanel(this, event)">Продолжить покупки</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
+<div class="size-row">
+<span class="size-chip">S</span>
+<span class="size-chip">M</span>
+<span class="size-chip">L</span>
+<span class="size-chip">XL</span>
+</div>
+</div>
 
 </div>
-      </div>
-    </section>
-  </main>
 
-  <script>
-    document.querySelectorAll('.size-options').forEach(group => {
-      group.querySelectorAll('.size-chip').forEach(btn => {
-        btn.addEventListener('click', () => {
-          group.querySelectorAll('.size-chip').forEach(x => x.classList.remove('active'));
-          btn.classList.add('active');
-        });
-      });
-    });
-  </script>
-  <script>
-document.querySelectorAll('.merch-slider').forEach(slider => {
-  const slides = slider.querySelectorAll('.merch-slide');
-  const dots = slider.querySelectorAll('.dot');
-  const prevBtn = slider.querySelector('.prev');
-  const nextBtn = slider.querySelector('.next');
+</div>
 
-  let current = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
-  }
-
-  prevBtn.addEventListener('click', () => {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-  });
-
-  nextBtn.addEventListener('click', () => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  });
-});
-</script>
-  <script>
-function toggleBuyPanel(button, event){
-  event.stopPropagation();
-  const panel = button.closest('.buy-panel');
-  panel.classList.toggle('active');
-}
-
-function selectSize(button, event){
-  event.stopPropagation();
-  const group = button.closest('.size-options');
-  group.querySelectorAll('.size-chip').forEach(chip => chip.classList.remove('active'));
-  <script>
-function toggleBuyPanel(button, event){
-  event.stopPropagation();
-  const panel = button.closest('.buy-panel');
-  panel.classList.toggle('active');
-}
-
-function toggleDetails(button, event){
-  event.stopPropagation();
-  const card = button.closest('.merch-card');
-  card.classList.toggle('open');
-}
-
-function selectSize(button, event){
-  event.stopPropagation();
-  const group = button.closest('.size-options');
-  const panel = button.closest('.buy-panel');
-
-  group.querySelectorAll('.size-chip').forEach(chip => chip.classList.remove('active'));
-  button.classList.add('active');
-
-  panel.classList.add('size-selected');
-}
-
-function closeBuyPanel(button, event){
-  event.stopPropagation();
-  const panel = button.closest('.buy-panel');
-  panel.classList.remove('active');
-}
-</script>button.classList.add('active');
-}
-</script>
-  
 </body>
 </html>
