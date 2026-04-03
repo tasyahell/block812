@@ -476,3 +476,42 @@ p{line-height:1.7}
     height:280px;
   }
 }
+.about-block812-scroll{
+  overflow-x:auto;
+  padding-bottom:10px;
+}
+
+.about-block812-track{
+  display:flex;
+  gap:18px;
+}
+
+.about-photo-card{
+  min-width:260px;
+  flex:0 0 auto;
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.about-photo-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+/* неоновая рамка */
+.about-photo-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  padding:1px;
+  background:linear-gradient(135deg, #ff3434, #ff4fd8, #39f3ff);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+}
