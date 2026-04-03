@@ -17,3 +17,41 @@ revealNodes.forEach(el => {
   el.classList.add('reveal');
   io.observe(el);
 });
+// ===== PAGE TRANSITION =====
+const pageTransition = document.getElementById('page-transition');
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    pageTransition?.classList.add('hide');
+  }, 400);
+});
+
+document.querySelectorAll('a[href]').forEach(link => {
+  const href = link.getAttribute('href');
+
+  if (
+    !href ||
+    href.startsWith('#') ||
+    href.startsWith('mailto:') ||
+    href.startsWith('tel:') ||
+    link.hasAttribute('target')
+  ) return;
+
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+
+    pageTransition?.classList.remove('hide');
+
+    setTimeout(() => {
+      window.location.href = this.href;
+    }, 400);
+  });
+});
+
+// функция для кнопок
+function goToPage(url){
+  pageTransition?.classList.remove('hide');
+  setTimeout(() => {
+    window.location.href = url;
+  }, 400);
+}
