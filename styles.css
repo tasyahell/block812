@@ -629,3 +629,28 @@ p{line-height:1.7}
   color:var(--red);
   text-shadow:0 0 12px rgba(255,52,52,.35);
 }
+.neon-text{
+  color:#fff;
+  background:linear-gradient(90deg,#ff3434,#ff4fd8,#39f3ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  text-shadow:
+    0 0 6px rgba(255,52,52,.6),
+    0 0 12px rgba(255,79,216,.5),
+    0 0 18px rgba(57,243,255,.4);
+
+  animation: neonGlow 2.5s ease-in-out infinite @keyframes neonGlow{
+  from{
+    text-shadow:
+      0 0 4px rgba(255,52,52,.4),
+      0 0 10px rgba(255,79,216,.3),
+      0 0 14px rgba(57,243,255,.2);
+  }
+  to{
+    text-shadow:
+      0 0 8px rgba(255,52,52,.8),
+      0 0 18px rgba(255,79,216,.6),
+      0 0 26px rgba(57,243,255,.5);
+  }
+}
