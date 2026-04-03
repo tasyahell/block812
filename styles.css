@@ -345,3 +345,31 @@ p{line-height:1.7}
     grid-template-columns:1fr;
   }
 }
+.about-block812{
+  display:grid;
+  gap:20px;
+}
+
+.about-block812-text{
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:28px;
+}
+
+.about-block812-text p{
+  color:var(--muted);
+}
+
+.about-block812-photos{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.about-block812-photos img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:20px;
+}
