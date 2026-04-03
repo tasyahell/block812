@@ -39,13 +39,13 @@ a{text-decoration:none;color:inherit}
 }
 .brand-title{font-family:Orbitron,sans-serif;font-size:2rem;letter-spacing:.10em}
 .brand-subtitle{color:var(--muted)}
-.nav{display:flex;gap:18px;align-items:center;color:rgba(245,247,251,.78)}
-.cart-link{
-  position:relative; display:inline-flex; align-items:center; gap:10px;
-  padding:8px 12px; border-radius:999px;
+.nav{display:flex;gap:14px;align-items:center;color:rgba(245,247,251,.78)}
+.icon-link{
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  width:74px; height:42px; border-radius:999px;
   border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03);
 }
-.cart-car{
+.icon-car{
   width:54px; height:22px; display:block;
   filter:drop-shadow(0 0 8px rgba(255,87,216,.22)) drop-shadow(0 0 12px rgba(119,240,255,.12));
 }
@@ -113,11 +113,45 @@ textarea.input{min-height:110px;padding:14px 16px;resize:vertical}
 .btn.full{width:100%}
 .note{margin-top:10px;color:var(--muted);font-size:.92rem}
 .empty{color:var(--muted)}
+.preloader{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px;
+  background:
+    radial-gradient(circle at center, rgba(255,87,216,.10), transparent 28%),
+    rgba(5,7,12,.96);
+  transition:opacity .45s ease, visibility .45s ease;
+}
+.preloader.hide{opacity:0; visibility:hidden}
+.preloader-logo{
+  font-family:Orbitron,sans-serif; letter-spacing:.18em; font-size:clamp(2rem,7vw,4rem);
+  color:#fff;
+  text-shadow:0 0 10px rgba(255,64,64,.35), 0 0 18px rgba(255,87,216,.28), 0 0 26px rgba(119,240,255,.18);
+}
+.preloader-bar{
+  width:min(280px, 70vw); height:6px; border-radius:999px; overflow:hidden;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08);
+}
+.preloader-bar span{
+  display:block; width:42%; height:100%;
+  background:linear-gradient(90deg,var(--red),var(--pink),var(--cyan));
+  box-shadow:0 0 12px rgba(255,87,216,.25),0 0 20px rgba(119,240,255,.20);
+  animation:loaderMove 1.4s ease-in-out infinite;
+}
+@keyframes loaderMove{
+  0%{transform:translateX(-110%)}
+  50%{transform:translateX(115%)}
+  100%{transform:translateX(-110%)}
+}
 @keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 @media (max-width:960px){.nav{display:none}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">BLOCK812</div>
+  <div class="preloader-bar"><span></span></div>
+</div>
+
 <header class="header">
   <a class="brand" href="index.html">
     <span class="brand-mark">812</span>
@@ -126,16 +160,30 @@ textarea.input{min-height:110px;padding:14px 16px;resize:vertical}
   <nav class="nav">
     <a href="index.html">Главная</a>
     <a href="service.html">Автосервис</a>
-    <a href="shop.html">Магазин</a>
-    <a href="tattoo.html">Тату</a>
-    <a class="cart-link" href="cart.html" aria-label="Корзина">
-      <svg class="cart-car" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 58L36 44H77L98 31H129L149 42H176L194 50V62H184C181 71 173 77 164 77C155 77 147 71 144 62H84C81 71 73 77 64 77C55 77 47 71 44 62H20V58Z" stroke="url(#g1)" stroke-width="4" stroke-linejoin="round"/>
-        <circle cx="64" cy="62" r="12" stroke="url(#g1)" stroke-width="4"/>
-        <circle cx="164" cy="62" r="12" stroke="url(#g1)" stroke-width="4"/>
-        <path d="M47 44H92M104 31V43M132 42H156" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
+    <a class="icon-link" href="shop.html" aria-label="Магазин">
+      <svg class="icon-car" viewBox="0 0 230 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 60H34L47 42H114L132 28H165L187 45H208V60H198C195 70 187 77 177 77C167 77 159 70 156 60H76C73 70 65 77 55 77C45 77 37 70 34 60H18Z" stroke="url(#shopGrad2)" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="55" cy="60" r="12" stroke="url(#shopGrad2)" stroke-width="4"/>
+        <circle cx="177" cy="60" r="12" stroke="url(#shopGrad2)" stroke-width="4"/>
+        <path d="M44 42H96M110 28V42M136 45H166M166 45L182 34" stroke="url(#shopGrad2)" stroke-width="4" stroke-linecap="round"/>
         <defs>
-          <linearGradient id="g1" x1="20" y1="30" x2="194" y2="78" gradientUnits="userSpaceOnUse">
+          <linearGradient id="shopGrad2" x1="18" y1="28" x2="208" y2="78" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FF4040"/>
+            <stop offset="0.55" stop-color="#FF57D8"/>
+            <stop offset="1" stop-color="#77F0FF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </a>
+    <a href="tattoo.html">Тату</a>
+    <a class="icon-link" href="cart.html" aria-label="Корзина">
+      <svg class="icon-car" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 58L36 44H77L98 31H129L149 42H176L194 50V62H184C181 71 173 77 164 77C155 77 147 71 144 62H84C81 71 73 77 64 77C55 77 47 71 44 62H20V58Z" stroke="url(#cartGrad2)" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="64" cy="62" r="12" stroke="url(#cartGrad2)" stroke-width="4"/>
+        <circle cx="164" cy="62" r="12" stroke="url(#cartGrad2)" stroke-width="4"/>
+        <path d="M47 44H92M104 31V43M132 42H156" stroke="url(#cartGrad2)" stroke-width="4" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="cartGrad2" x1="20" y1="30" x2="194" y2="78" gradientUnits="userSpaceOnUse">
             <stop stop-color="#FF4040"/>
             <stop offset="0.55" stop-color="#FF57D8"/>
             <stop offset="1" stop-color="#77F0FF"/>
@@ -195,6 +243,9 @@ textarea.input{min-height:110px;padding:14px 16px;resize:vertical}
 </main>
 
 <script>
+function hidePreloader(){ const el = document.getElementById('preloader'); if(el) el.classList.add('hide'); }
+window.addEventListener('load', () => setTimeout(hidePreloader, 450));
+
 function getCart(){ return JSON.parse(localStorage.getItem('block812_cart') || '[]'); }
 function saveCart(cart){ localStorage.setItem('block812_cart', JSON.stringify(cart)); updateCartCount(true); }
 function formatPrice(price){ return price.toLocaleString('ru-RU') + ' ₽'; }
