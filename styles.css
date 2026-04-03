@@ -877,3 +877,21 @@ p{line-height:1.7}
     grid-template-columns:repeat(3, 1fr);
   }
 }
+.product-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+
+.product-card{
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.product-card img{
+  width:100%;
+  border-radius:16px;
+  margin-bottom:12px;
+}
