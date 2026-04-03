@@ -1047,3 +1047,77 @@ p{line-height:1.7}
     font-size:1.6rem;
   }
 }
+.merch-slider{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.slider-track{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+}
+
+.merch-slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity .35s ease;
+  display:block;
+}
+
+.merch-slide.active{
+  opacity:1;
+}
+
+.slider-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:999px;
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+.slider-btn.prev{
+  left:12px;
+}
+
+.slider-btn.next{
+  right:12px;
+}
+
+.slider-dots{
+  position:absolute;
+  left:50%;
+  bottom:12px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  z-index:2;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:rgba(255,255,255,.35);
+}
+
+.dot.active{
+  background:#fff;
+  box-shadow:0 0 12px rgba(255,79,216,.45);
+}
