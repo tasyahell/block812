@@ -153,7 +153,9 @@ p{line-height:1.7}
   position:relative;
   overflow:hidden;
   border:1px solid rgba(255,255,255,0.16);
-  background:rgba(255,255,255,0.06);
+background:linear-gradient(90deg, rgba(255,52,52,.18), rgba(255,79,216,.16), rgba(141,107,255,.16), rgba(57,243,255,.16));
+background-size:300% 300%;
+animation:gradientMove 6s ease infinite;
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
   box-shadow:
@@ -729,4 +731,9 @@ p{line-height:1.7}
 
 .glass-btn:active{
   transform:scale(0.98);
+}
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
