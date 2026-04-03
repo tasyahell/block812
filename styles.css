@@ -1170,3 +1170,72 @@ p{line-height:1.7}
 .secondary-btn{
   background:rgba(255,255,255,.06);
 }
+.merch-desc-hidden{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .4s ease, opacity .3s ease, margin-top .3s ease;
+  margin-top:0;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+.merch-card.open .merch-desc-hidden{
+  max-height:240px;
+  opacity:1;
+  margin-top:16px;
+}
+
+.buy-panel{
+  position:relative;
+  margin-top:18px;
+}
+
+.buy-popup{
+  margin-top:14px;
+  padding:16px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow:
+    0 0 14px rgba(255,52,52,.10),
+    0 0 24px rgba(255,79,216,.08),
+    0 0 34px rgba(57,243,255,.06);
+  display:none;
+}
+
+.buy-panel.active .buy-popup{
+  display:block;
+}
+
+.buy-popup-actions{
+  display:flex;
+  gap:12px;
+  margin-top:14px;
+}
+
+.details-btn{
+  background:none;
+  border:none;
+  color:var(--cyan);
+  font-weight:700;
+  cursor:pointer;
+  padding:0;
+}
+
+.after-size-actions{
+  display:none;
+  gap:12px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+
+.buy-panel.size-selected .after-size-actions{
+  display:flex;
+}
+
+.secondary-btn{
+  background:rgba(255,255,255,.06);
+}
