@@ -497,3 +497,46 @@ p{line-height:1.7}
 .card:hover::before{
   opacity:1;
 }
+.feature{
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background:linear-gradient(135deg,#ff3434,#ff4fd8,#39f3ff);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  opacity:.45;
+  pointer-events:none;
+  transition:opacity .3s ease;
+}
+
+.feature:hover{
+  transform:translateY(-6px);
+  box-shadow:
+    0 0 16px rgba(255,52,52,.30),
+    0 0 28px rgba(255,79,216,.20),
+    0 0 40px rgba(57,243,255,.14);
+}
+
+.feature:hover::before{
+  opacity:1;
+}
+
+.feature .text-link{
+  transition: color .25s ease, text-shadow .25s ease;
+}
+
+.feature:hover .text-link{
+  color:var(--red);
+  text-shadow:0 0 12px rgba(255,52,52,.35);
+}
