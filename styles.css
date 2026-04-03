@@ -181,6 +181,7 @@ p{line-height:1.7}
   background:rgba(10,14,24,0.28);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
+  z-index:-1;
 }
 
 .btn span,
@@ -199,6 +200,7 @@ p{line-height:1.7}
   transform:skewX(-20deg);
   transition:left .7s ease;
   pointer-events:none;
+  z-index:-1;
 }
 
 .btn:hover{
