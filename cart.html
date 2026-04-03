@@ -1,14 +1,237 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BLOCK812 Cart</title>
-  <meta name="description" content="Корзина BLOCK812." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLOCK812 Cart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080d;
+  --panel:rgba(12,16,28,.78);
+  --panel-2:rgba(255,255,255,.04);
+  --line:rgba(255,255,255,.10);
+  --text:#f5f7fb;
+  --muted:rgba(245,247,251,.72);
+  --red:#ff4040;
+  --pink:#ff57d8;
+  --cyan:#77f0ff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255,87,216,.12), transparent 22%),
+    radial-gradient(circle at 88% 18%, rgba(119,240,255,.10), transparent 22%),
+    radial-gradient(circle at 70% 82%, rgba(255,64,64,.10), transparent 28%),
+    linear-gradient(180deg,#06070b 0%, #0a0d16 100%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none;
+  opacity:.06;
+  background-image:
+    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(circle at center, black 35%, transparent 90%);
+}
+a{text-decoration:none;color:inherit}
+.container{width:min(calc(100% - 40px),1200px); margin:0 auto}
+.header{
+  position:sticky; top:16px; z-index:40;
+  width:min(calc(100% - 40px),1200px);
+  margin:16px auto 0;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:18px 22px;
+  background:rgba(6,10,18,.86);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--line);
+  border-radius:30px;
+  box-shadow:
+    0 0 18px rgba(255,64,64,.08),
+    0 0 30px rgba(255,87,216,.08),
+    0 0 42px rgba(119,240,255,.05);
+}
+.brand{display:flex;align-items:center;gap:16px}
+.brand-mark{
+  width:76px;height:76px;border-radius:24px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--red),var(--pink) 55%,var(--cyan));
+  color:#111;font-family:Orbitron,sans-serif;font-weight:800;font-size:1.8rem;
+  box-shadow:0 0 20px rgba(255,87,216,.25),0 0 32px rgba(119,240,255,.18);
+}
+.brand-title{font-family:Orbitron,sans-serif;font-size:2rem;letter-spacing:.10em}
+.brand-subtitle{color:var(--muted)}
+.nav{display:flex;gap:18px;color:rgba(245,247,251,.78)}
+.section{padding:32px 0}
+.card{
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:28px;
+  backdrop-filter:blur(16px);
+  padding:28px;
+  box-shadow:
+    0 0 14px rgba(255,64,64,.08),
+    0 0 26px rgba(255,87,216,.07),
+    0 0 36px rgba(119,240,255,.05);
+}
+.eyebrow{
+  margin:0 0 12px;
+  color:var(--cyan);
+  font-family:Orbitron,sans-serif;
+  letter-spacing:.18em;
+  font-size:.86rem;
+}
+h1,h2,h3,p{margin:0}
+h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.02}
+h2{font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.06}
+h3{font-size:1.2rem}
+.lead{margin-top:14px;color:var(--muted);line-height:1.7}
+.subnav{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.subnav a{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 18px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)
+}
+.grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:24px;
+}
+.cart-list{display:grid;gap:18px}
+.cart-item{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:16px;
+  padding:18px;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  position:relative;
+  overflow:hidden;
+}
+.cart-item::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:24px;
+  padding:1px;
+  background:linear-gradient(135deg, rgba(255,64,64,.9), rgba(255,87,216,.75), rgba(119,240,255,.75));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  opacity:.35;
+  pointer-events:none;
+}
+.cart-thumb{
+  width:110px; height:140px;
+  border-radius:18px;
+  object-fit:cover;
+  background:#111;
+}
+.cart-meta{display:grid;gap:10px}
+.meta-row{
+  display:flex; gap:8px; flex-wrap:wrap;
+}
+.badge{
+  display:inline-flex;
+  padding:7px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  font-family:Orbitron,sans-serif;
+  font-size:.7rem;
+  letter-spacing:.08em;
+}
+.price{
+  font-family:Orbitron,sans-serif;
+  font-size:1.2rem;
+}
+.small{color:var(--muted); font-size:.95rem}
+.qty{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.qty-btn{
+  width:36px; height:36px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  font-size:1.2rem;
+  cursor:pointer;
+}
+.summary{
+  display:grid;
+  gap:18px;
+}
+.summary-line{
+  display:flex; justify-content:space-between; gap:16px;
+  color:var(--muted);
+}
+.summary-line.total{
+  color:#fff;
+  font-size:1.08rem;
+  font-weight:700;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.form-grid{
+  display:grid; gap:14px;
+}
+.input{
+  width:100%;
+  min-height:50px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  padding:0 16px;
+  outline:none;
+}
+textarea.input{
+  min-height:110px;
+  padding:14px 16px;
+  resize:vertical;
+}
+.btn{
+  min-height:52px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;
+  color:#fff;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.20), rgba(141,107,255,.20), rgba(119,240,255,.20), rgba(255,64,64,.22));
+  background-size:300% 300%;animation:gradientMove 5s ease infinite;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 12px rgba(255,64,64,.10),0 0 24px rgba(255,87,216,.08),0 0 36px rgba(119,240,255,.06);
+}
+.btn.secondary{
+  background:rgba(255,255,255,.06);
+  animation:none;
+}
+.btn.full{width:100%}
+.note{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:.92rem;
+}
+.footer{padding:24px 0 40px;color:var(--muted);text-align:center}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@media (max-width:960px){
+  .nav{display:none}
+  .grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
   <header class="header">
@@ -24,39 +247,97 @@
       <a href="service.html">Автосервис</a>
       <a href="shop.html">Магазин</a>
       <a href="tattoo.html">Тату</a>
-      <a href="#contacts">Контакты</a>
     </nav>
-    <button class="menu-btn" aria-label="Меню">☰</button>
   </header>
 
   <main class="container">
-    <section class="page-hero section">
+    <section class="section">
       <div class="card">
         <p class="eyebrow">BLOCK812 / CART</p>
-        <h1>Корзина <span class="gradient-text">в разработке</span></h1>
-        <p class="lead">Кнопка «Купить» уже ведёт сюда. Дальше сюда можно добавить выбор размера, количества и форму оформления заказа.</p>
+        <h1>Корзина</h1>
+        <p class="lead">Здесь можно оформить предзаказ, проверить размеры и оставить данные для связи.</p>
         <div class="subnav">
           <a href="merch.html">← Вернуться в каталог</a>
-          <a href="https://t.me/tasyatttooo" target="_blank" rel="noopener noreferrer">Оформить через Telegram</a>
+          <a href="#checkout">К оформлению</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <div class="cart-list">
+          <div class="card">
+            <p class="eyebrow">ТОВАРЫ</p>
+            <h2>Твой заказ</h2>
+          </div>
+
+          <article class="cart-item">
+            <img src="vaz2105-0 2.PNG" alt="ВАЗ 2105" class="cart-thumb">
+            <div class="cart-meta">
+              <div class="meta-row">
+                <span class="badge">Предзаказ</span>
+                <span class="badge">до 5 дней</span>
+              </div>
+              <h3>ВАЗ 2105</h3>
+              <div class="price">3 500 ₽</div>
+              <div class="small">Размер: S</div>
+              <div class="qty">
+                <button class="qty-btn" type="button">−</button>
+                <span>1</span>
+                <button class="qty-btn" type="button">+</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cart-item">
+            <img src="vaz2102-0 2.PNG" alt="ВАЗ 2102" class="cart-thumb">
+            <div class="cart-meta">
+              <div class="meta-row">
+                <span class="badge">Предзаказ</span>
+                <span class="badge">до 5 дней</span>
+              </div>
+              <h3>ВАЗ 2102</h3>
+              <div class="price">3 500 ₽</div>
+              <div class="small">Размер: M</div>
+              <div class="qty">
+                <button class="qty-btn" type="button">−</button>
+                <span>1</span>
+                <button class="qty-btn" type="button">+</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="summary">
+          <div class="card" id="checkout">
+            <p class="eyebrow">ОФОРМЛЕНИЕ</p>
+            <h2>Контакты для заказа</h2>
+
+            <div class="form-grid" style="margin-top:18px;">
+              <input class="input" type="text" placeholder="Имя">
+              <input class="input" type="tel" placeholder="Телефон">
+              <input class="input" type="text" placeholder="Telegram или VK">
+              <textarea class="input" placeholder="Комментарий к заказу: размер, пожелания, способ связи"></textarea>
+            </div>
+
+            <div style="margin-top:20px; display:grid; gap:12px;">
+              <div class="summary-line"><span>Товары</span><span>7 000 ₽</span></div>
+              <div class="summary-line"><span>Изготовление</span><span>до 5 дней</span></div>
+              <div class="summary-line total"><span>Итого</span><span>7 000 ₽</span></div>
+            </div>
+
+            <div style="display:grid; gap:12px; margin-top:20px;">
+              <a class="btn full" href="https://t.me/tasyatttooo" target="_blank" rel="noopener noreferrer">Оформить через Telegram</a>
+              <a class="btn secondary full" href="merch.html">Продолжить покупки</a>
+            </div>
+
+            <p class="note">Это пока красивая страница корзины без автоматического подсчёта. Позже сюда можно подключить реальные данные заказа и выбор доставки.</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer" id="contacts">
-    <div>
-      <div class="brand-title">BLOCK812</div>
-      <p>Неоновое пространство бренда, где движ, автосервис, магазин и тату соединяются в один живой проект.</p>
-    </div>
-    <div class="footer-links">
-      <a href="tel:+79295612001">8 929 561-20-01</a>
-      <a href="mailto:block812cda@gmail.com">block812cda@gmail.com</a>
-      <a href="https://t.me/tasyatttooo" target="_blank" rel="noopener noreferrer">Telegram</a>
-      <a href="https://vk.ru/club237263685" target="_blank" rel="noopener noreferrer">VK</a>
-      <a href="https://yandex.ru/maps/org/tasya_ttt_ooo/72614967061?si=ht46ne8tf0uf006nqydhjxcbdg" target="_blank" rel="noopener noreferrer">Яндекс Карты</a>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <footer class="footer">BLOCK812 ©</footer>
 </body>
 </html>
