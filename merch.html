@@ -4,10 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BLOCK812 Merch</title>
-  <meta name="description" content="Каталог мерча BLOCK812: футболки ВАЗ 2105, ВАЗ 2102 и ВАЗ 2101." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,7 +20,6 @@
       <a href="service.html">Автосервис</a>
       <a href="shop.html">Магазин</a>
       <a href="tattoo.html">Тату</a>
-      <a href="#contacts">Контакты</a>
     </nav>
     <button class="menu-btn" aria-label="Меню">☰</button>
   </header>
@@ -34,92 +29,118 @@
       <div class="card">
         <p class="eyebrow">BLOCK812 / MERCH</p>
         <h1>Каталог <span class="gradient-text">мерча</span></h1>
-        <p class="lead">Три футболки в каталоге: ВАЗ 2105, ВАЗ 2102 и ВАЗ 2101. Для каждой карточки уже добавлены цена, статус предзаказа и срок изготовления.</p>
+        <p class="lead">Футболки BLOCK812 в формате предзаказа. Срок изготовления — до 5 дней.</p>
         <div class="subnav">
           <a href="shop.html">← Назад в магазин</a>
-          <a href="#catalog-grid">К каталогу</a>
+          <a href="cart.html">Открыть корзину</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="catalog-grid">
-      <p class="eyebrow">МЕРЧ BLOCK812</p>
-      <h2>Футболки в наличии для предзаказа</h2>
+    <section class="section">
+      <p class="eyebrow">КОЛЛЕКЦИЯ</p>
+      <h2>Три футболки в каталоге</h2>
 
-      <div class="catalog-tip">
-        Ниже уже стоят временные картинки. Чтобы подставить свои фото, просто замени названия файлов в строках <code>&lt;img src="..."&gt;</code> в этом файле.
-        Пример: было <code>assets/shop/shop_art_gray.jpg</code>, стало <code>assets/shop/твоё_имя_файла.jpg</code>.
-      </div>
+      <div class="merch-grid" style="margin-top:28px">
 
-      <div class="product-grid" style="margin-top:28px">
-        <article class="product-card">
-          <!-- ЗДЕСЬ МЕНЯЕТСЯ ФОТО ДЛЯ ВАЗ 2105 -->
-          <!-- БЫЛО: assets/shop/shop_art_gray.jpg -->
-          <!-- ВСТАВЬ СВОЁ ИМЯ ФАЙЛА ВНУТРИ src -->
-          <img src="assets/shop/shop_art_gray.jpg" alt="Футболка ВАЗ 2105">
-          <div class="product-card-body">
+        <article class="merch-card">
+          <div class="merch-image-wrap">
+            <!-- ЗДЕСЬ МЕНЯЕТСЯ ФОТО ДЛЯ ВАЗ 2105 -->
+            <!-- замени имя файла внутри src -->
+            <img src="assets/shop/shop_art_gray.jpg" alt="Футболка ВАЗ 2105" class="merch-image">
+          </div>
+          <div class="merch-body">
+            <div class="merch-topline">
+              <span class="product-badge">Предзаказ</span>
+              <span class="product-badge">до 5 дней</span>
+            </div>
             <h3>ВАЗ 2105</h3>
-            <div class="product-price">3 500 ₽</div>
-            <div class="product-meta">
-              <span class="product-badge">Предзаказ</span>
-              <span class="product-badge">до 5 дней</span>
+            <p class="merch-price">3 500 ₽</p>
+            <p class="merch-note">Футболка с авторским принтом ВАЗ 2105.</p>
+
+            <div class="size-row">
+              <span class="size-title">Размер</span>
+              <div class="size-options">
+                <button class="size-chip active" type="button">S</button>
+                <button class="size-chip" type="button">M</button>
+                <button class="size-chip" type="button">L</button>
+                <button class="size-chip" type="button">XL</button>
+              </div>
             </div>
-            <p class="product-note">Футболка с авторским принтом ВАЗ 2105. Производство под заказ, срок изготовления до 5 дней.</p>
-            <a class="btn btn-primary" href="cart.html">Купить</a>
+
+            <a class="btn merch-btn" href="cart.html">Купить</a>
           </div>
         </article>
 
-        <article class="product-card">
-          <!-- ЗДЕСЬ МЕНЯЕТСЯ ФОТО ДЛЯ ВАЗ 2102 -->
-          <!-- БЫЛО: assets/shop/shop_art_red.jpg -->
-          <!-- ВСТАВЬ СВОЁ ИМЯ ФАЙЛА ВНУТРИ src -->
-          <img src="assets/shop/shop_art_red.jpg" alt="Футболка ВАЗ 2102">
-          <div class="product-card-body">
+        <article class="merch-card">
+          <div class="merch-image-wrap">
+            <!-- ЗДЕСЬ МЕНЯЕТСЯ ФОТО ДЛЯ ВАЗ 2102 -->
+            <img src="assets/shop/shop_art_red.jpg" alt="Футболка ВАЗ 2102" class="merch-image">
+          </div>
+          <div class="merch-body">
+            <div class="merch-topline">
+              <span class="product-badge">Предзаказ</span>
+              <span class="product-badge">до 5 дней</span>
+            </div>
             <h3>ВАЗ 2102</h3>
-            <div class="product-price">3 500 ₽</div>
-            <div class="product-meta">
-              <span class="product-badge">Предзаказ</span>
-              <span class="product-badge">до 5 дней</span>
+            <p class="merch-price">3 500 ₽</p>
+            <p class="merch-note">Футболка с авторским принтом ВАЗ 2102.</p>
+
+            <div class="size-row">
+              <span class="size-title">Размер</span>
+              <div class="size-options">
+                <button class="size-chip active" type="button">S</button>
+                <button class="size-chip" type="button">M</button>
+                <button class="size-chip" type="button">L</button>
+                <button class="size-chip" type="button">XL</button>
+              </div>
             </div>
-            <p class="product-note">Футболка с авторским принтом ВАЗ 2102. Производство под заказ, срок изготовления до 5 дней.</p>
-            <a class="btn btn-primary" href="cart.html">Купить</a>
+
+            <a class="btn merch-btn" href="cart.html">Купить</a>
           </div>
         </article>
 
-        <article class="product-card">
-          <!-- ЗДЕСЬ МЕНЯЕТСЯ ФОТО ДЛЯ ВАЗ 2101 -->
-          <!-- БЫЛО: assets/shop/shop_art_green.jpg -->
-          <!-- ВСТАВЬ СВОЁ ИМЯ ФАЙЛА ВНУТРИ src -->
-          <img src="assets/shop/shop_art_green.jpg" alt="Футболка ВАЗ 2101">
-          <div class="product-card-body">
-            <h3>ВАЗ 2101</h3>
-            <div class="product-price">3 500 ₽</div>
-            <div class="product-meta">
+        <article class="merch-card">
+          <div class="merch-image-wrap">
+            <!-- ЗДЕСЬ МЕНЯЕТСЯ ФОТО ДЛЯ ВАЗ 2101 -->
+            <img src="assets/shop/shop_art_green.jpg" alt="Футболка ВАЗ 2101" class="merch-image">
+          </div>
+          <div class="merch-body">
+            <div class="merch-topline">
               <span class="product-badge">Предзаказ</span>
               <span class="product-badge">до 5 дней</span>
             </div>
-            <p class="product-note">Футболка с авторским принтом ВАЗ 2101. Производство под заказ, срок изготовления до 5 дней.</p>
-            <a class="btn btn-primary" href="cart.html">Купить</a>
+            <h3>ВАЗ 2101</h3>
+            <p class="merch-price">3 500 ₽</p>
+            <p class="merch-note">Футболка с авторским принтом ВАЗ 2101.</p>
+
+            <div class="size-row">
+              <span class="size-title">Размер</span>
+              <div class="size-options">
+                <button class="size-chip active" type="button">S</button>
+                <button class="size-chip" type="button">M</button>
+                <button class="size-chip" type="button">L</button>
+                <button class="size-chip" type="button">XL</button>
+              </div>
+            </div>
+
+            <a class="btn merch-btn" href="cart.html">Купить</a>
           </div>
         </article>
+
       </div>
     </section>
   </main>
 
-  <footer class="footer" id="contacts">
-    <div>
-      <div class="brand-title">BLOCK812</div>
-      <p>Неоновое пространство бренда, где движ, автосервис, магазин и тату соединяются в один живой проект.</p>
-    </div>
-    <div class="footer-links">
-      <a href="tel:+79295612001">8 929 561-20-01</a>
-      <a href="mailto:block812cda@gmail.com">block812cda@gmail.com</a>
-      <a href="https://t.me/tasyatttooo" target="_blank" rel="noopener noreferrer">Telegram</a>
-      <a href="https://vk.ru/club237263685" target="_blank" rel="noopener noreferrer">VK</a>
-      <a href="https://yandex.ru/maps/org/tasya_ttt_ooo/72614967061?si=ht46ne8tf0uf006nqydhjxcbdg" target="_blank" rel="noopener noreferrer">Яндекс Карты</a>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('.size-options').forEach(group => {
+      group.querySelectorAll('.size-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('.size-chip').forEach(x => x.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
