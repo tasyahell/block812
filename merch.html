@@ -463,5 +463,42 @@ h3{font-size:1.75rem}
       panel.classList.remove('active');
     }
   </script>
+  <script>
+function addToCartAndContinue(button, event){
+  event.stopPropagation();
+
+  const card = button.closest('.merch-card');
+  const activeSize = card.querySelector('.size-chip.active');
+
+  if(!activeSize){
+    alert('Сначала выбери размер');
+    return;
+  }
+
+  const size = activeSize.textContent.trim();
+  const name = card.querySelector('h3').textContent.trim();
+  const priceText = card.querySelector('.merch-price').textContent.replace(/[^\d]/g, '');
+  const price = Number(priceText);
+  const image = card.querySelector('.merch-slide').getAttribute('src');
+
+  const item = {
+    id: Date.now(),
+    name,
+    price,
+    image,
+    size,
+    qty: 1
+  };
+
+  const cart = JSON.parse(localStorage.getItem('block812_cart') || '[]');
+  cart.push(item);
+  localStorage.setItem('block812_cart', JSON.stringify(cart));
+
+  const panel = button.closest('.buy-panel');
+  panel.classList.remove('active');
+
+  alert('Товар добавлен в корзину');
+}
+</script>
 </body>
 </html>
