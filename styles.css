@@ -456,32 +456,20 @@ p{line-height:1.7}
   padding-bottom:10px;
 }
 
-.quick-card{
-  flex:0 0 auto;
-  min-width:200px;
-  padding:22px 18px;
-  border-radius:18px;
-  text-decoration:none;
-  color:#fff;
-  font-weight:600;
-  font-size:16px;
-  text-align:center;
+/* === НЕОНОВЫЙ ЭФФЕКТ КАРТОЧЕК === */
 
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter:blur(10px);
-
-  transition:all .25s ease;
-  position:relative;
+.card{
+  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 /* неоновая рамка */
-.quick-card::before{
+.card::before{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:18px;
+  border-radius:inherit;
   padding:1px;
 
   background:linear-gradient(135deg,#ff3434,#ff4fd8,#39f3ff);
@@ -491,19 +479,21 @@ p{line-height:1.7}
     linear-gradient(#000 0 0);
   -webkit-mask-composite:xor;
   mask-composite:exclude;
+
+  opacity:0.4;
+  transition:opacity .3s ease;
 }
 
-/* hover эффект */
-.quick-card:hover{
-  transform:translateY(-5px);
+/* при наведении */
+.card:hover{
+  transform:translateY(-6px);
   box-shadow:
-    0 0 14px rgba(255,52,52,.35),
-    0 0 26px rgba(255,79,216,.25),
-    0 0 38px rgba(57,243,255,.18);
+    0 0 16px rgba(255,52,52,.35),
+    0 0 28px rgba(255,79,216,.25),
+    0 0 40px rgba(57,243,255,.18);
 }
 
-/* текст чуть светится */
-.quick-card span{
-  position:relative;
-  z-index:1;
+/* усиливаем неон */
+.card:hover::before{
+  opacity:1;
 }
