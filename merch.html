@@ -262,5 +262,19 @@ document.querySelectorAll('.merch-slider').forEach(slider => {
   });
 });
 </script>
+  <script>
+function toggleBuyPanel(button, event){
+  event.stopPropagation();
+  const panel = button.closest('.buy-panel');
+  panel.classList.toggle('active');
+}
+
+function selectSize(button, event){
+  event.stopPropagation();
+  const group = button.closest('.size-options');
+  group.querySelectorAll('.size-chip').forEach(chip => chip.classList.remove('active'));
+  button.classList.add('active');
+}
+</script>
 </body>
 </html>
