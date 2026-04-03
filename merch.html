@@ -180,5 +180,34 @@
       });
     });
   </script>
+  <script>
+document.querySelectorAll('.merch-slider').forEach(slider => {
+  const slides = slider.querySelectorAll('.merch-slide');
+  const dots = slider.querySelectorAll('.dot');
+  const prevBtn = slider.querySelector('.prev');
+  const nextBtn = slider.querySelector('.next');
+
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
+});
+</script>
 </body>
 </html>
