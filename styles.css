@@ -1270,3 +1270,44 @@ p{line-height:1.7}
     0 0 18px rgba(255,87,216,.28),
     0 0 30px rgba(119,240,255,.18);
 }
+.page-transition{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:18px;
+  background:rgba(5,7,12,.96);
+  transition:opacity .4s;
+}
+
+.page-transition.hide{
+  opacity:0;
+  pointer-events:none;
+}
+
+.page-transition__logo{
+  font-size:40px;
+  color:white;
+}
+
+.page-transition__bar{
+  width:200px;
+  height:5px;
+  background:#222;
+}
+
+.page-transition__bar span{
+  display:block;
+  width:50%;
+  height:100%;
+  background:linear-gradient(90deg,red,pink,cyan);
+  animation:move 1.5s infinite;
+}
+
+@keyframes move{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(200%)}
+}
