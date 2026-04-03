@@ -1,320 +1,663 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLOCK812 Cart</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#07080d; --panel:rgba(12,16,28,.78); --line:rgba(255,255,255,.10);
-  --text:#f5f7fb; --muted:rgba(245,247,251,.72);
-  --red:#ff4040; --pink:#ff57d8; --cyan:#77f0ff;
-}
-*{box-sizing:border-box}
-body{
-  margin:0; font-family:Inter,system-ui,sans-serif; color:var(--text);
-  background:
-    radial-gradient(circle at 12% 12%, rgba(255,87,216,.12), transparent 22%),
-    radial-gradient(circle at 88% 18%, rgba(119,240,255,.10), transparent 22%),
-    radial-gradient(circle at 70% 82%, rgba(255,64,64,.10), transparent 28%),
-    linear-gradient(180deg,#06070b 0%, #0a0d16 100%);
-  min-height:100vh;
-}
-a{text-decoration:none;color:inherit}
-.container{width:min(calc(100% - 40px),1200px); margin:0 auto}
-.header{
-  position:sticky; top:16px; z-index:40; width:min(calc(100% - 40px),1200px);
-  margin:16px auto 0; display:flex; align-items:center; justify-content:space-between; gap:16px;
-  padding:18px 22px; background:rgba(6,10,18,.86); backdrop-filter:blur(16px);
-  border:1px solid var(--line); border-radius:30px;
-}
-.brand{display:flex;align-items:center;gap:16px}
-.brand-mark{
-  width:76px;height:76px;border-radius:24px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--red),var(--pink) 55%,var(--cyan));
-  color:#111;font-family:Orbitron,sans-serif;font-weight:800;font-size:1.8rem;
-}
-.brand-title{font-family:Orbitron,sans-serif;font-size:2rem;letter-spacing:.10em}
-.brand-subtitle{color:var(--muted)}
-.nav{display:flex;gap:14px;align-items:center;color:rgba(245,247,251,.78)}
-.icon-link{
-  position:relative; display:inline-flex; align-items:center; justify-content:center;
-  width:74px; height:42px; border-radius:999px;
-  border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03);
-}
-.icon-car{
-  width:54px; height:22px; display:block;
-  filter:drop-shadow(0 0 8px rgba(255,87,216,.22)) drop-shadow(0 0 12px rgba(119,240,255,.12));
-}
-.cart-count{
-  min-width:22px;height:22px;padding:0 6px;border-radius:999px; display:inline-flex; align-items:center; justify-content:center;
-  position:absolute; top:-10px; right:-10px; font-size:.78rem; font-weight:700;
-  background:linear-gradient(135deg,var(--red),var(--pink)); color:#fff;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.cart-count.bump{
-  transform:scale(1.25);
-  box-shadow:0 0 18px rgba(255,64,64,.32),0 0 28px rgba(255,87,216,.28),0 0 36px rgba(119,240,255,.18);
-}
-.section{padding:32px 0}
-.card{
-  border:1px solid var(--line); background:var(--panel); border-radius:28px;
-  backdrop-filter:blur(16px); padding:28px;
-}
-.eyebrow{margin:0 0 12px;color:var(--cyan);font-family:Orbitron,sans-serif;letter-spacing:.18em;font-size:.86rem}
-h1,h2,h3,p{margin:0}
-h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.02}
-h2{font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.06}
-h3{font-size:1.2rem}
-.lead{margin-top:14px;color:var(--muted);line-height:1.7}
-.subnav{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-.subnav a{
-  display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)
-}
-.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-.cart-list{display:grid;gap:18px}
-.cart-item{
-  display:grid;grid-template-columns:110px 1fr;gap:16px;padding:18px;border-radius:24px;
-  border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);position:relative;overflow:hidden;
-}
-.cart-thumb{width:110px;height:140px;border-radius:18px;object-fit:cover;background:#111}
-.cart-meta{display:grid;gap:10px}
-.meta-row{display:flex;gap:8px;flex-wrap:wrap}
-.badge{
-  display:inline-flex;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.10);
-  background:rgba(255,255,255,.04);font-family:Orbitron,sans-serif;font-size:.7rem;letter-spacing:.08em;
-}
-.price{font-family:Orbitron,sans-serif;font-size:1.2rem}
-.small{color:var(--muted); font-size:.95rem}
-.qty{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.qty-btn{
-  width:36px; height:36px; border-radius:999px; border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.04); color:#fff; font-size:1.2rem; cursor:pointer;
-}
-.summary{display:grid;gap:18px}
-.summary-line{display:flex;justify-content:space-between;gap:16px;color:var(--muted)}
-.summary-line.total{color:#fff;font-size:1.08rem;font-weight:700;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
-.form-grid{display:grid;gap:14px}
-.input{
-  width:100%;min-height:50px;border-radius:16px;border:1px solid rgba(255,255,255,.10);
-  background:rgba(255,255,255,.04);color:#fff;padding:0 16px;outline:none;
-}
-textarea.input{min-height:110px;padding:14px 16px;resize:vertical}
-.btn{
-  min-height:52px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:#fff;
-  border:1px solid rgba(255,255,255,.16); background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.20), rgba(141,107,255,.20), rgba(119,240,255,.20), rgba(255,64,64,.22));
-  background-size:300% 300%; animation:gradientMove 5s ease infinite;
-}
-.btn.secondary{background:rgba(255,255,255,.06); animation:none}
-.btn.full{width:100%}
-.note{margin-top:10px;color:var(--muted);font-size:.92rem}
-.empty{color:var(--muted)}
-.preloader{
-  position:fixed; inset:0; z-index:9999;
-  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px;
-  background:
-    radial-gradient(circle at center, rgba(255,87,216,.10), transparent 28%),
-    rgba(5,7,12,.96);
-  transition:opacity .45s ease, visibility .45s ease;
-}
-.preloader.hide{opacity:0; visibility:hidden}
-.preloader-logo{
-  font-family:Orbitron,sans-serif; letter-spacing:.18em; font-size:clamp(2rem,7vw,4rem);
-  color:#fff;
-  text-shadow:0 0 10px rgba(255,64,64,.35), 0 0 18px rgba(255,87,216,.28), 0 0 26px rgba(119,240,255,.18);
-}
-.preloader-bar{
-  width:min(280px, 70vw); height:6px; border-radius:999px; overflow:hidden;
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08);
-}
-.preloader-bar span{
-  display:block; width:42%; height:100%;
-  background:linear-gradient(90deg,var(--red),var(--pink),var(--cyan));
-  box-shadow:0 0 12px rgba(255,87,216,.25),0 0 20px rgba(119,240,255,.20);
-  animation:loaderMove 1.4s ease-in-out infinite;
-}
-@keyframes loaderMove{
-  0%{transform:translateX(-110%)}
-  50%{transform:translateX(115%)}
-  100%{transform:translateX(-110%)}
-}
-@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@media (max-width:960px){.nav{display:none}.grid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLOCK812 Cart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07080d;
+      --panel:rgba(12,16,28,.78);
+      --line:rgba(255,255,255,.10);
+      --text:#f5f7fb;
+      --muted:rgba(245,247,251,.72);
+      --red:#ff4040;
+      --pink:#ff57d8;
+      --cyan:#77f0ff;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255,87,216,.12), transparent 22%),
+        radial-gradient(circle at 88% 18%, rgba(119,240,255,.10), transparent 22%),
+        radial-gradient(circle at 70% 82%, rgba(255,64,64,.10), transparent 28%),
+        linear-gradient(180deg,#06070b 0%, #0a0d16 100%);
+      min-height:100vh;
+    }
+
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+
+    .container{
+      width:min(calc(100% - 40px),1200px);
+      margin:0 auto;
+    }
+
+    .preloader{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:18px;
+      background:
+        radial-gradient(circle at center, rgba(255,87,216,.10), transparent 28%),
+        rgba(5,7,12,.96);
+      transition:opacity .45s ease, visibility .45s ease;
+    }
+
+    .preloader.hide{
+      opacity:0;
+      visibility:hidden;
+    }
+
+    .preloader-logo{
+      font-family:Orbitron,sans-serif;
+      letter-spacing:.18em;
+      font-size:clamp(2rem,7vw,4rem);
+      color:#fff;
+      text-shadow:
+        0 0 10px rgba(255,64,64,.35),
+        0 0 18px rgba(255,87,216,.28),
+        0 0 26px rgba(119,240,255,.18);
+    }
+
+    .preloader-bar{
+      width:min(280px, 70vw);
+      height:6px;
+      border-radius:999px;
+      overflow:hidden;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .preloader-bar span{
+      display:block;
+      width:42%;
+      height:100%;
+      background:linear-gradient(90deg,var(--red),var(--pink),var(--cyan));
+      box-shadow:0 0 12px rgba(255,87,216,.25),0 0 20px rgba(119,240,255,.20);
+      animation:loaderMove 1.4s ease-in-out infinite;
+    }
+
+    @keyframes loaderMove{
+      0%{transform:translateX(-110%)}
+      50%{transform:translateX(115%)}
+      100%{transform:translateX(-110%)}
+    }
+
+    .header{
+      position:sticky;
+      top:16px;
+      z-index:40;
+      width:min(calc(100% - 40px),1200px);
+      margin:16px auto 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 22px;
+      background:rgba(6,10,18,.86);
+      backdrop-filter:blur(16px);
+      border:1px solid var(--line);
+      border-radius:30px;
+      box-shadow:
+        0 0 18px rgba(255,64,64,.08),
+        0 0 30px rgba(255,87,216,.08),
+        0 0 42px rgba(119,240,255,.05);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .brand-mark{
+      width:76px;
+      height:76px;
+      border-radius:24px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--red),var(--pink) 55%,var(--cyan));
+      color:#111;
+      font-family:Orbitron,sans-serif;
+      font-weight:800;
+      font-size:1.8rem;
+    }
+
+    .brand-title{
+      font-family:Orbitron,sans-serif;
+      font-size:2rem;
+      letter-spacing:.10em;
+    }
+
+    .brand-subtitle{
+      color:var(--muted);
+    }
+
+    .nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      color:rgba(245,247,251,.78);
+    }
+
+    .nav a:not(.icon-link):hover{
+      color:#fff;
+    }
+
+    .icon-link{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:74px;
+      height:42px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      box-shadow:0 0 12px rgba(255,87,216,.08),0 0 18px rgba(119,240,255,.05);
+      transition:.25s ease;
+    }
+
+    .icon-link:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 16px rgba(255,87,216,.14),0 0 24px rgba(119,240,255,.10);
+    }
+
+    .icon-car{
+      width:54px;
+      height:22px;
+      display:block;
+      filter:drop-shadow(0 0 8px rgba(255,87,216,.22)) drop-shadow(0 0 12px rgba(119,240,255,.12));
+    }
+
+    .cart-count{
+      min-width:22px;
+      height:22px;
+      padding:0 6px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      position:absolute;
+      top:-10px;
+      right:-10px;
+      font-size:.78rem;
+      font-weight:700;
+      background:linear-gradient(135deg,var(--red),var(--pink));
+      color:#fff;
+      box-shadow:0 0 14px rgba(255,87,216,.25);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+
+    .cart-count.bump{
+      transform:scale(1.25);
+      box-shadow:
+        0 0 18px rgba(255,64,64,.32),
+        0 0 28px rgba(255,87,216,.28),
+        0 0 36px rgba(119,240,255,.18);
+    }
+
+    .section{
+      padding:32px 0;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background:var(--panel);
+      border-radius:28px;
+      backdrop-filter:blur(16px);
+      padding:28px;
+      box-shadow:
+        0 0 14px rgba(255,64,64,.08),
+        0 0 26px rgba(255,87,216,.07),
+        0 0 36px rgba(119,240,255,.05);
+    }
+
+    .eyebrow{
+      margin:0 0 12px;
+      color:var(--cyan);
+      font-family:Orbitron,sans-serif;
+      letter-spacing:.18em;
+      font-size:.86rem;
+    }
+
+    h1,h2,h3,p{margin:0}
+
+    h1{
+      font-size:clamp(2.2rem,7vw,4rem);
+      line-height:1.02;
+    }
+
+    h2{
+      font-size:clamp(1.6rem,5vw,2.3rem);
+      line-height:1.06;
+    }
+
+    h3{
+      font-size:1.2rem;
+    }
+
+    .lead{
+      margin-top:14px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .subnav{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .subnav a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+    }
+
+    .cart-list{
+      display:grid;
+      gap:18px;
+    }
+
+    .cart-item{
+      display:grid;
+      grid-template-columns:110px 1fr;
+      gap:16px;
+      padding:18px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cart-thumb{
+      width:110px;
+      height:140px;
+      border-radius:18px;
+      object-fit:cover;
+      background:#111;
+    }
+
+    .cart-meta{
+      display:grid;
+      gap:10px;
+    }
+
+    .meta-row{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .badge{
+      display:inline-flex;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      font-family:Orbitron,sans-serif;
+      font-size:.7rem;
+      letter-spacing:.08em;
+    }
+
+    .price{
+      font-family:Orbitron,sans-serif;
+      font-size:1.2rem;
+    }
+
+    .small{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .qty{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .qty-btn{
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      font-size:1.2rem;
+      cursor:pointer;
+    }
+
+    .summary{
+      display:grid;
+      gap:18px;
+    }
+
+    .summary-line{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      color:var(--muted);
+    }
+
+    .summary-line.total{
+      color:#fff;
+      font-size:1.08rem;
+      font-weight:700;
+      padding-top:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .form-grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .input{
+      width:100%;
+      min-height:50px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      padding:0 16px;
+      outline:none;
+    }
+
+    textarea.input{
+      min-height:110px;
+      padding:14px 16px;
+      resize:vertical;
+    }
+
+    .btn{
+      min-height:52px;
+      padding:0 22px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.16);
+      background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.20), rgba(141,107,255,.20), rgba(119,240,255,.20), rgba(255,64,64,.22));
+      background-size:300% 300%;
+      animation:gradientMove 5s ease infinite;
+      cursor:pointer;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.06);
+      animation:none;
+    }
+
+    .btn.full{
+      width:100%;
+    }
+
+    .note{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .empty{
+      color:var(--muted);
+    }
+
+    @keyframes gradientMove{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    @media (max-width:960px){
+      .nav{display:none}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-<div class="preloader" id="preloader">
-  <div class="preloader-logo">BLOCK812</div>
-  <div class="preloader-bar"><span></span></div>
-</div>
+  <div class="preloader" id="preloader">
+    <div class="preloader-logo">BLOCK812</div>
+    <div class="preloader-bar"><span></span></div>
+  </div>
 
-<header class="header">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">812</span>
-    <span><span class="brand-title">BLOCK812</span><br><span class="brand-subtitle">движ • автосервис • магазин • тату</span></span>
-  </a>
-  <nav class="nav">
-    <a href="index.html">Главная</a>
-    <a href="service.html">Автосервис</a>
-    <a class="icon-link" href="shop.html" aria-label="Магазин">
-      <svg class="icon-car" viewBox="0 0 230 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 60H34L47 42H114L132 28H165L187 45H208V60H198C195 70 187 77 177 77C167 77 159 70 156 60H76C73 70 65 77 55 77C45 77 37 70 34 60H18Z" stroke="url(#shopGrad2)" stroke-width="4" stroke-linejoin="round"/>
-        <circle cx="55" cy="60" r="12" stroke="url(#shopGrad2)" stroke-width="4"/>
-        <circle cx="177" cy="60" r="12" stroke="url(#shopGrad2)" stroke-width="4"/>
-        <path d="M44 42H96M110 28V42M136 45H166M166 45L182 34" stroke="url(#shopGrad2)" stroke-width="4" stroke-linecap="round"/>
-        <defs>
-          <linearGradient id="shopGrad2" x1="18" y1="28" x2="208" y2="78" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FF4040"/>
-            <stop offset="0.55" stop-color="#FF57D8"/>
-            <stop offset="1" stop-color="#77F0FF"/>
-          </linearGradient>
-        </defs>
-      </svg>
+  <header class="header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">812</span>
+      <span>
+        <span class="brand-title">BLOCK812</span><br>
+        <span class="brand-subtitle">движ • автосервис • магазин • тату</span>
+      </span>
     </a>
-    <a href="tattoo.html">Тату</a>
-    <a class="icon-link" href="cart.html" aria-label="Корзина">
-      <svg class="icon-car" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 58L36 44H77L98 31H129L149 42H176L194 50V62H184C181 71 173 77 164 77C155 77 147 71 144 62H84C81 71 73 77 64 77C55 77 47 71 44 62H20V58Z" stroke="url(#cartGrad2)" stroke-width="4" stroke-linejoin="round"/>
-        <circle cx="64" cy="62" r="12" stroke="url(#cartGrad2)" stroke-width="4"/>
-        <circle cx="164" cy="62" r="12" stroke="url(#cartGrad2)" stroke-width="4"/>
-        <path d="M47 44H92M104 31V43M132 42H156" stroke="url(#cartGrad2)" stroke-width="4" stroke-linecap="round"/>
-        <defs>
-          <linearGradient id="cartGrad2" x1="20" y1="30" x2="194" y2="78" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#FF4040"/>
-            <stop offset="0.55" stop-color="#FF57D8"/>
-            <stop offset="1" stop-color="#77F0FF"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <span class="cart-count" id="cart-count">0</span>
-    </a>
-  </nav>
-</header>
 
-<main class="container">
-  <section class="section">
-    <div class="card">
-      <p class="eyebrow">BLOCK812 / CART</p>
-      <h1>Корзина</h1>
-      <p class="lead">Здесь можно оформить предзаказ, проверить размеры и оставить данные для связи.</p>
-      <div class="subnav">
-        <a href="merch.html">← Вернуться в каталог</a>
-        <a href="#checkout">К оформлению</a>
-      </div>
-    </div>
-  </section>
+    <nav class="nav">
+      <a href="index.html">Главная</a>
+      <a href="service.html">Автосервис</a>
 
-  <section class="section">
-    <div class="grid">
-      <div class="cart-list" id="cart-list"></div>
+      <a class="icon-link" href="shop.html" aria-label="Магазин">
+        <svg class="icon-car" viewBox="0 0 230 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 60H34L47 42H114L132 28H165L187 45H208V60H198C195 70 187 77 177 77C167 77 159 70 156 60H76C73 70 65 77 55 77C45 77 37 70 34 60H18Z" stroke="url(#shopGrad2)" stroke-width="4" stroke-linejoin="round"/>
+          <circle cx="55" cy="60" r="12" stroke="url(#shopGrad2)" stroke-width="4"/>
+          <circle cx="177" cy="60" r="12" stroke="url(#shopGrad2)" stroke-width="4"/>
+          <path d="M44 42H96M110 28V42M136 45H166M166 45L182 34" stroke="url(#shopGrad2)" stroke-width="4" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="shopGrad2" x1="18" y1="28" x2="208" y2="78" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FF4040"/>
+              <stop offset="0.55" stop-color="#FF57D8"/>
+              <stop offset="1" stop-color="#77F0FF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </a>
 
-      <div class="summary">
-        <div class="card" id="checkout">
-          <p class="eyebrow">ОФОРМЛЕНИЕ</p>
-          <h2>Контакты для заказа</h2>
+      <a href="favorites.html">Избранное</a>
+      <a href="tattoo.html">Тату</a>
 
-          <div class="form-grid" style="margin-top:18px;">
-            <input class="input" type="text" placeholder="Имя">
-            <input class="input" type="tel" placeholder="Телефон">
-            <input class="input" type="text" placeholder="Telegram или VK">
-            <textarea class="input" placeholder="Комментарий к заказу: размер, пожелания, способ связи"></textarea>
-          </div>
+      <a class="icon-link" href="cart.html" aria-label="Корзина">
+        <svg class="icon-car" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 58L36 44H77L98 31H129L149 42H176L194 50V62H184C181 71 173 77 164 77C155 77 147 71 144 62H84C81 71 73 77 64 77C55 77 47 71 44 62H20V58Z" stroke="url(#cartGrad2)" stroke-width="4" stroke-linejoin="round"/>
+          <circle cx="64" cy="62" r="12" stroke="url(#cartGrad2)" stroke-width="4"/>
+          <circle cx="164" cy="62" r="12" stroke="url(#cartGrad2)" stroke-width="4"/>
+          <path d="M47 44H92M104 31V43M132 42H156" stroke="url(#cartGrad2)" stroke-width="4" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="cartGrad2" x1="20" y1="30" x2="194" y2="78" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FF4040"/>
+              <stop offset="0.55" stop-color="#FF57D8"/>
+              <stop offset="1" stop-color="#77F0FF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
+    </nav>
+  </header>
 
-          <div style="margin-top:20px; display:grid; gap:12px;">
-            <div class="summary-line"><span>Товары</span><span id="subtotal">0 ₽</span></div>
-            <div class="summary-line"><span>Изготовление</span><span>до 5 дней</span></div>
-            <div class="summary-line total"><span>Итого</span><span id="total">0 ₽</span></div>
-          </div>
-
-          <div style="display:grid; gap:12px; margin-top:20px;">
-            <a class="btn full" href="https://t.me/tasyatttooo" target="_blank" rel="noopener noreferrer">Оформить через Telegram</a>
-            <a class="btn secondary full" href="merch.html">Продолжить покупки</a>
-          </div>
-
-          <p class="note">Это пока красивая страница корзины без онлайн-оплаты. Позже сюда можно подключить реальные данные заказа и выбор доставки.</p>
+  <main class="container">
+    <section class="section">
+      <div class="card">
+        <p class="eyebrow">BLOCK812 / CART</p>
+        <h1>Корзина</h1>
+        <p class="lead">Здесь можно оформить предзаказ, проверить размеры и оставить данные для связи.</p>
+        <div class="subnav">
+          <a href="merch.html">← Вернуться в каталог</a>
+          <a href="#checkout">К оформлению</a>
         </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<script>
-function hidePreloader(){ const el = document.getElementById('preloader'); if(el) el.classList.add('hide'); }
-window.addEventListener('load', () => setTimeout(hidePreloader, 450));
+    <section class="section">
+      <div class="grid">
+        <div class="cart-list" id="cart-list"></div>
 
-function getCart(){ return JSON.parse(localStorage.getItem('block812_cart') || '[]'); }
-function saveCart(cart){ localStorage.setItem('block812_cart', JSON.stringify(cart)); updateCartCount(true); }
-function formatPrice(price){ return price.toLocaleString('ru-RU') + ' ₽'; }
-function updateCartCount(animate){
-  const cart = getCart();
-  const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
-  const el = document.getElementById('cart-count');
-  if(el){
-    el.textContent = count;
-    if(animate){
-      el.classList.add('bump');
-      clearTimeout(window.__cartBump);
-      window.__cartBump = setTimeout(() => el.classList.remove('bump'), 260);
+        <div class="summary">
+          <div class="card" id="checkout">
+            <p class="eyebrow">ОФОРМЛЕНИЕ</p>
+            <h2>Контакты для заказа</h2>
+
+            <div class="form-grid" style="margin-top:18px;">
+              <input class="input" type="text" placeholder="Имя">
+              <input class="input" type="tel" placeholder="Телефон">
+              <input class="input" type="text" placeholder="Telegram или VK">
+              <textarea class="input" placeholder="Комментарий к заказу: размер, пожелания, способ связи"></textarea>
+            </div>
+
+            <div style="margin-top:20px; display:grid; gap:12px;">
+              <div class="summary-line"><span>Товары</span><span id="subtotal">0 ₽</span></div>
+              <div class="summary-line"><span>Изготовление</span><span>до 5 дней</span></div>
+              <div class="summary-line total"><span>Итого</span><span id="total">0 ₽</span></div>
+            </div>
+
+            <div style="display:grid; gap:12px; margin-top:20px;">
+              <a class="btn full" href="https://t.me/tasyatttooo" target="_blank" rel="noopener noreferrer">Оформить через Telegram</a>
+              <a class="btn secondary full" href="merch.html">Продолжить покупки</a>
+            </div>
+
+            <p class="note">Это пока красивая страница корзины без онлайн-оплаты. Позже сюда можно подключить реальные данные заказа и выбор доставки.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function hidePreloader(){
+      const el = document.getElementById('preloader');
+      if(el) el.classList.add('hide');
     }
-  }
-}
-function removeFromCart(id){
-  const cart = getCart().filter(item => item.id !== id);
-  saveCart(cart); renderCart();
-}
-function changeQty(id, delta){
-  const cart = getCart().map(item => {
-    if(item.id === id){ item.qty = Math.max(1, item.qty + delta); }
-    return item;
-  });
-  saveCart(cart); renderCart();
-}
-function renderCart(){
-  const cart = getCart();
-  const cartList = document.getElementById('cart-list');
-  const subtotal = document.getElementById('subtotal');
-  const total = document.getElementById('total');
+    window.addEventListener('load', () => setTimeout(hidePreloader, 450));
 
-  cartList.innerHTML = '<div class="card"><p class="eyebrow">ТОВАРЫ</p><h2>Твой заказ</h2></div>';
+    function getCart(){
+      return JSON.parse(localStorage.getItem('block812_cart') || '[]');
+    }
 
-  if(cart.length === 0){
-    cartList.innerHTML += '<div class="card"><p class="empty">Корзина пока пустая.</p></div>';
-    subtotal.textContent = '0 ₽';
-    total.textContent = '0 ₽';
-    return;
-  }
+    function saveCart(cart){
+      localStorage.setItem('block812_cart', JSON.stringify(cart));
+      updateCartCount(true);
+    }
 
-  let sum = 0;
-  cart.forEach(item => {
-    sum += item.price * item.qty;
-    cartList.innerHTML += `
-      <article class="cart-item">
-        <img src="${item.image}" alt="${item.name}" class="cart-thumb">
-        <div class="cart-meta">
-          <div class="meta-row"><span class="badge">Предзаказ</span><span class="badge">до 5 дней</span></div>
-          <h3>${item.name}</h3>
-          <div class="price">${formatPrice(item.price)}</div>
-          <div class="small">Размер: ${item.size}</div>
-          <div class="qty">
-            <button class="qty-btn" type="button" onclick="changeQty(${item.id}, -1)">−</button>
-            <span>${item.qty}</span>
-            <button class="qty-btn" type="button" onclick="changeQty(${item.id}, 1)">+</button>
-            <button class="qty-btn" type="button" onclick="removeFromCart(${item.id})">×</button>
-          </div>
+    function formatPrice(price){
+      return price.toLocaleString('ru-RU') + ' ₽';
+    }
+
+    function updateCartCount(animate){
+      const cart = getCart();
+      const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+      const el = document.getElementById('cart-count');
+      if(el){
+        el.textContent = count;
+        if(animate){
+          el.classList.add('bump');
+          clearTimeout(window.__cartBump);
+          window.__cartBump = setTimeout(() => el.classList.remove('bump'), 260);
+        }
+      }
+    }
+
+    function removeFromCart(id){
+      const cart = getCart().filter(item => item.id !== id);
+      saveCart(cart);
+      renderCart();
+    }
+
+    function changeQty(id, delta){
+      const cart = getCart().map(item => {
+        if(item.id === id){
+          item.qty = Math.max(1, item.qty + delta);
+        }
+        return item;
+      });
+      saveCart(cart);
+      renderCart();
+    }
+
+    function renderCart(){
+      const cart = getCart();
+      const cartList = document.getElementById('cart-list');
+      const subtotal = document.getElementById('subtotal');
+      const total = document.getElementById('total');
+
+      cartList.innerHTML = `
+        <div class="card">
+          <p class="eyebrow">ТОВАРЫ</p>
+          <h2>Твой заказ</h2>
         </div>
-      </article>
-    `;
-  });
+      `;
 
-  subtotal.textContent = formatPrice(sum);
-  total.textContent = formatPrice(sum);
-}
-updateCartCount(false);
-renderCart();
-</script>
+      if(cart.length === 0){
+        cartList.innerHTML += `
+          <div class="card">
+            <p class="empty">Корзина пока пустая.</p>
+          </div>
+        `;
+        subtotal.textContent = '0 ₽';
+        total.textContent = '0 ₽';
+        return;
+      }
+
+      let sum = 0;
+
+      cart.forEach(item => {
+        sum += item.price * item.qty;
+
+        cartList.innerHTML += `
+          <article class="cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-thumb">
+            <div class="cart-meta">
+              <div class="meta-row">
+                <span class="badge">Предзаказ</span>
+                <span class="badge">до 5 дней</span>
+              </div>
+
+              <h3>${item.name}</h3>
+              <div class="price">${formatPrice(item.price)}</div>
+              <div class="small">Размер: ${item.size}</div>
+
+              <div class="qty">
+                <button class="qty-btn" type="button" onclick="changeQty(${item.id}, -1)">−</button>
+                <span>${item.qty}</span>
+                <button class="qty-btn" type="button" onclick="changeQty(${item.id}, 1)">+</button>
+                <button class="qty-btn" type="button" onclick="removeFromCart(${item.id})">×</button>
+              </div>
+            </div>
+          </article>
+        `;
+      });
+
+      subtotal.textContent = formatPrice(sum);
+      total.textContent = formatPrice(sum);
+    }
+
+    updateCartCount(false);
+    renderCart();
+  </script>
 </body>
 </html>
