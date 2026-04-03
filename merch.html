@@ -41,19 +41,19 @@
       <p class="eyebrow">КОЛЛЕКЦИЯ</p>
       <h2>Три футболки в каталоге</h2>
 
-      <div class="merch-grid" style="margin-top:28px">
+    <div class="merch-grid" style="margin-top:28px">
 
   <!-- ВАЗ 2105 -->
   <article class="merch-card">
-    <div class="merch-slider" onclick="this.closest('.merch-card').classList.toggle('open')">
-      <button class="slider-btn prev" type="button" onclick="event.stopPropagation()">‹</button>
+    <div class="merch-slider">
+      <button class="slider-btn prev" type="button">‹</button>
 
       <div class="slider-track">
         <img src="vaz2105-0 2.PNG" alt="ВАЗ 2105 фото 1" class="merch-slide active">
         <img src="vaz2105-1 2.PNG" alt="ВАЗ 2105 фото 2" class="merch-slide">
       </div>
 
-      <button class="slider-btn next" type="button" onclick="event.stopPropagation()">›</button>
+      <button class="slider-btn next" type="button">›</button>
 
       <div class="slider-dots">
         <span class="dot active"></span>
@@ -85,7 +85,7 @@
           <div class="size-row">
             <span class="size-title">Выбери размер</span>
             <div class="size-options">
-              <button class="size-chip active" type="button" onclick="selectSize(this, event)">S</button>
+              <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
@@ -93,7 +93,12 @@
           </div>
 
           <div class="buy-popup-actions">
-            <a class="btn merch-btn secondary-btn" href="cart.html" onclick="event.stopPropagation()">Подробнее</a>
+            <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
+          </div>
+
+          <div class="after-size-actions">
+            <a class="btn merch-btn" href="cart.html" onclick="event.stopPropagation()">В корзину</a>
+            <button class="btn merch-btn secondary-btn" type="button" onclick="closeBuyPanel(this, event)">Продолжить покупки</button>
           </div>
         </div>
       </div>
@@ -102,8 +107,8 @@
 
   <!-- ВАЗ 2102 -->
   <article class="merch-card">
-    <div class="merch-slider" onclick="this.closest('.merch-card').classList.toggle('open')">
-      <button class="slider-btn prev" type="button" onclick="event.stopPropagation()">‹</button>
+    <div class="merch-slider">
+      <button class="slider-btn prev" type="button">‹</button>
 
       <div class="slider-track">
         <img src="vaz2102-0 2.PNG" alt="ВАЗ 2102 фото 1" class="merch-slide active">
@@ -111,7 +116,7 @@
         <img src="vaz2102-2 2.PNG" alt="ВАЗ 2102 фото 3" class="merch-slide">
       </div>
 
-      <button class="slider-btn next" type="button" onclick="event.stopPropagation()">›</button>
+      <button class="slider-btn next" type="button">›</button>
 
       <div class="slider-dots">
         <span class="dot active"></span>
@@ -144,7 +149,7 @@
           <div class="size-row">
             <span class="size-title">Выбери размер</span>
             <div class="size-options">
-              <button class="size-chip active" type="button" onclick="selectSize(this, event)">S</button>
+              <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
@@ -152,7 +157,12 @@
           </div>
 
           <div class="buy-popup-actions">
-            <a class="btn merch-btn secondary-btn" href="cart.html" onclick="event.stopPropagation()">Подробнее</a>
+            <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
+          </div>
+
+          <div class="after-size-actions">
+            <a class="btn merch-btn" href="cart.html" onclick="event.stopPropagation()">В корзину</a>
+            <button class="btn merch-btn secondary-btn" type="button" onclick="closeBuyPanel(this, event)">Продолжить покупки</button>
           </div>
         </div>
       </div>
@@ -161,8 +171,8 @@
 
   <!-- ВАЗ 2101 -->
   <article class="merch-card">
-    <div class="merch-slider" onclick="this.closest('.merch-card').classList.toggle('open')">
-      <button class="slider-btn prev" type="button" onclick="event.stopPropagation()">‹</button>
+    <div class="merch-slider">
+      <button class="slider-btn prev" type="button">‹</button>
 
       <div class="slider-track">
         <img src="vaz2101-0 2.PNG" alt="ВАЗ 2101 фото 1" class="merch-slide active">
@@ -170,7 +180,7 @@
         <img src="vaz2101-2 2.PNG" alt="ВАЗ 2101 фото 3" class="merch-slide">
       </div>
 
-      <button class="slider-btn next" type="button" onclick="event.stopPropagation()">›</button>
+      <button class="slider-btn next" type="button">‹</button>
 
       <div class="slider-dots">
         <span class="dot active"></span>
@@ -203,7 +213,7 @@
           <div class="size-row">
             <span class="size-title">Выбери размер</span>
             <div class="size-options">
-              <button class="size-chip active" type="button" onclick="selectSize(this, event)">S</button>
+              <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
               <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
@@ -211,7 +221,12 @@
           </div>
 
           <div class="buy-popup-actions">
-            <a class="btn merch-btn secondary-btn" href="cart.html" onclick="event.stopPropagation()">Подробнее</a>
+            <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
+          </div>
+
+          <div class="after-size-actions">
+            <a class="btn merch-btn" href="cart.html" onclick="event.stopPropagation()">В корзину</a>
+            <button class="btn merch-btn secondary-btn" type="button" onclick="closeBuyPanel(this, event)">Продолжить покупки</button>
           </div>
         </div>
       </div>
