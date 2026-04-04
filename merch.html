@@ -712,60 +712,45 @@
   </div>
 
   <header class="header">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">812</span>
-      <span>
-        <span class="brand-title">BLOCK812</span><br>
-        <span class="brand-subtitle">движ • автосервис • магазин • тату</span>
-      </span>
+  <a class="brand" href="index.html">
+    <span class="brand-mark">812</span>
+    <span>
+      <span class="brand-title">BLOCK812</span><br>
+      <span class="brand-subtitle">движ • автосервис • магазин • тату</span>
+    </span>
+  </a>
+
+  <nav class="nav">
+    <a href="index.html">Главная</a>
+    <a href="service.html">Автосервис</a>
+    <a href="shop.html">Магазин</a>
+    <a href="tattoo.html">Тату</a>
+  </nav>
+
+  <div class="header-actions">
+    <a class="icon-link" href="favorites.html" aria-label="Избранное">
+      <span class="icon-heart">♥</span>
+      <span class="fav-count" id="fav-count">0</span>
     </a>
 
-    <nav class="nav">
-      <a href="index.html">Главная</a>
-      <a href="service.html">Автосервис</a>
-
-      <a class="icon-link" href="shop.html" aria-label="Магазин">
-        <svg class="icon-car" viewBox="0 0 230 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 60H34L47 42H114L132 28H165L187 45H208V60H198C195 70 187 77 177 77C167 77 159 70 156 60H76C73 70 65 77 55 77C45 77 37 70 34 60H18Z" stroke="url(#shopGrad)" stroke-width="4" stroke-linejoin="round"/>
-          <circle cx="55" cy="60" r="12" stroke="url(#shopGrad)" stroke-width="4"/>
-          <circle cx="177" cy="60" r="12" stroke="url(#shopGrad)" stroke-width="4"/>
-          <path d="M44 42H96M110 28V42M136 45H166M166 45L182 34" stroke="url(#shopGrad)" stroke-width="4" stroke-linecap="round"/>
-          <defs>
-            <linearGradient id="shopGrad" x1="18" y1="28" x2="208" y2="78" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#FF4040"/>
-              <stop offset="0.55" stop-color="#FF57D8"/>
-              <stop offset="1" stop-color="#77F0FF"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </a>
-
-      <a class="icon-link" href="favorites.html" aria-label="Избранное">
-        <span class="icon-heart">♥</span>
-        <span class="fav-count" id="fav-count">0</span>
-      </a>
-
-      <a href="tattoo.html">Тату</a>
-
-      <a class="icon-link" href="cart.html" aria-label="Корзина">
-        <svg class="icon-car" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 58L36 44H77L98 31H129L149 42H176L194 50V62H184C181 71 173 77 164 77C155 77 147 71 144 62H84C81 71 73 77 64 77C55 77 47 71 44 62H20V58Z" stroke="url(#cartGrad)" stroke-width="4" stroke-linejoin="round"/>
-          <circle cx="64" cy="62" r="12" stroke="url(#cartGrad)" stroke-width="4"/>
-          <circle cx="164" cy="62" r="12" stroke="url(#cartGrad)" stroke-width="4"/>
-          <path d="M47 44H92M104 31V43M132 42H156" stroke="url(#cartGrad)" stroke-width="4" stroke-linecap="round"/>
-          <defs>
-            <linearGradient id="cartGrad" x1="20" y1="30" x2="194" y2="78" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#FF4040"/>
-              <stop offset="0.55" stop-color="#FF57D8"/>
-              <stop offset="1" stop-color="#77F0FF"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        <span class="cart-count" id="cart-count">0</span>
-      </a>
-    </nav>
-  </header>
-
+    <a class="icon-link" href="cart.html" aria-label="Корзина">
+      <svg class="icon-car" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 58L36 44H77L98 31H129L149 42H176L194 50V62H184C181 71 173 77 164 77C155 77 147 71 144 62H84C81 71 73 77 64 77C55 77 47 71 44 62H20V58Z" stroke="url(#cartGrad)" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="64" cy="62" r="12" stroke="url(#cartGrad)" stroke-width="4"/>
+        <circle cx="164" cy="62" r="12" stroke="url(#cartGrad)" stroke-width="4"/>
+        <path d="M47 44H92M104 31V43M132 42H156" stroke="url(#cartGrad)" stroke-width="4" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="cartGrad" x1="20" y1="30" x2="194" y2="78" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FF4040"/>
+            <stop offset="0.55" stop-color="#FF57D8"/>
+            <stop offset="1" stop-color="#77F0FF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </div>
+</header>
   <main class="container">
     <section class="section">
       <div class="card">
