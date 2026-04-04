@@ -93,7 +93,7 @@ p{line-height:1.7}
 
 .hero{
   min-height: auto;
-  padding: 40px 0 20px;
+  padding: 40px 0 30px;
   display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center;
 }
 .hero h1 span,.gradient-text{
