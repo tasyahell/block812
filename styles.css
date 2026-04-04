@@ -1426,3 +1426,76 @@ p{line-height:1.7}
   50%{transform:translateX(120%)}
   100%{transform:translateX(-100%)}
 }
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px){
+
+  .hero{
+    min-height:auto !important;
+    display:block !important;
+    padding-top:8px;
+  }
+
+  h1{
+    font-size:clamp(2.2rem, 12vw, 3.4rem) !important;
+    line-height:.95;
+    word-break:break-word;
+  }
+
+  h2{
+    font-size:clamp(1.8rem, 9vw, 2.6rem) !important;
+    line-height:1;
+  }
+
+  .section{
+    padding:20px 16px !important;
+  }
+
+  .lead{
+    font-size:.95rem !important;
+    max-width:100%;
+  }
+
+}
+/* ===== DESKTOP POLISH ===== */
+@media (min-width: 769px){
+
+  /* больше воздуха между блоками */
+  .section{
+    padding:48px 24px !important;
+  }
+
+  .hero{
+    gap:48px !important;
+    margin-bottom:20px;
+  }
+
+  h1, h2{
+    margin-bottom:18px;
+  }
+
+  /* НЕОНОВЫЕ ЛЕЙБЛЫ (голубые подписи) */
+  .eyebrow{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:.85rem;
+    letter-spacing:.18em;
+    background:rgba(120,255,255,.06);
+    border:1px solid rgba(120,255,255,.25);
+    color:#7FF0FF;
+    box-shadow:0 0 12px rgba(120,255,255,.25);
+  }
+
+  /* подзаголовки — меньше + перелив */
+  .lead{
+    font-size:.95rem !important;
+    line-height:1.6;
+
+    background:linear-gradient(90deg,#fff,#ff57d8,#77f0ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    opacity:.85;
+  }
+
+}
