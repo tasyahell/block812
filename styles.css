@@ -726,3 +726,64 @@ h2{
     0 0 30px rgba(57,243,255,.10);
   flex:0 0 auto;
 }
+/* ===== ГАЛЕРЕЯ ===== */
+
+.gallery-scroll{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding-bottom:14px;
+
+  /* скрываем стандартный скролл */
+  scrollbar-width:none;
+}
+
+.gallery-scroll::-webkit-scrollbar{
+  height:6px;
+}
+
+.gallery-scroll::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb{
+  background:linear-gradient(90deg,#ff4040,#ff57d8,#77f0ff);
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(255,87,216,.5);
+}
+
+.gallery-track{
+  display:flex;
+  gap:16px;
+  width:max-content;
+}
+
+/* ===== КАРТОЧКИ ФОТО ===== */
+
+.gallery-track img{
+  width:65vw;
+  max-width:260px;
+  aspect-ratio:3/4;
+  object-fit:cover;
+
+  border-radius:22px;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    0 0 12px rgba(255,64,64,.25),
+    0 0 22px rgba(255,87,216,.25),
+    0 0 35px rgba(119,240,255,.25);
+
+  flex:0 0 auto;
+  transition:.3s ease;
+}
+
+.gallery-track img:hover{
+  transform:scale(1.04);
+
+  box-shadow:
+    0 0 20px rgba(255,64,64,.45),
+    0 0 35px rgba(255,87,216,.45),
+    0 0 60px rgba(119,240,255,.45);
+}
