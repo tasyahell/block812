@@ -9,103 +9,209 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#07080d;--panel:rgba(12,16,28,.78);--line:rgba(255,255,255,.10);--text:#f5f7fb;--muted:rgba(245,247,251,.72);--red:#ff4040;--pink:#ff57d8;--cyan:#77f0ff}
+    :root{
+      --bg:#07080d; --panel:rgba(12,16,28,.78); --line:rgba(255,255,255,.10);
+      --text:#f5f7fb; --muted:rgba(245,247,251,.72); --red:#ff4040; --pink:#ff57d8; --cyan:#77f0ff;
+    }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background-color:#06070b;background:
-      radial-gradient(circle at 12% 12%, rgba(255,87,216,.12), transparent 22%),
-      radial-gradient(circle at 88% 18%, rgba(119,240,255,.10), transparent 22%),
-      radial-gradient(circle at 70% 82%, rgba(255,64,64,.10), transparent 28%),
-      linear-gradient(180deg,#06070b 0%, #0a0d16 100%);min-height:100vh}
+    body{
+      margin:0; font-family:Inter,system-ui,sans-serif; color:var(--text); background-color:#06070b;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255,87,216,.12), transparent 22%),
+        radial-gradient(circle at 88% 18%, rgba(119,240,255,.10), transparent 22%),
+        radial-gradient(circle at 70% 82%, rgba(255,64,64,.10), transparent 28%),
+        linear-gradient(180deg,#06070b 0%, #0a0d16 100%);
+      min-height:100vh;
+    }
     a{text-decoration:none;color:inherit} button{font:inherit}
-    .container{width:min(calc(100% - 40px),1200px);margin:0 auto}
-    .preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;background:radial-gradient(circle at center, rgba(255,87,216,.10), transparent 28%),rgba(5,7,12,.96);transition:opacity .45s ease, visibility .45s ease}
-    .preloader.hide{opacity:0;visibility:hidden}
-    .preloader-logo{font-family:Orbitron,sans-serif;letter-spacing:.18em;font-size:clamp(2rem,7vw,4rem);color:#fff;text-shadow:0 0 10px rgba(255,64,64,.35),0 0 18px rgba(255,87,216,.28),0 0 26px rgba(119,240,255,.18)}
-    .preloader-bar{width:min(280px,70vw);height:6px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
-    .preloader-bar span{display:block;width:42%;height:100%;background:linear-gradient(90deg,var(--red),var(--pink),var(--cyan));box-shadow:0 0 12px rgba(255,87,216,.25),0 0 20px rgba(119,240,255,.20);animation:loaderMove 1.4s ease-in-out infinite}
+    .container{width:min(calc(100% - 40px),1200px); margin:0 auto}
+
+    .preloader{
+      position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px;
+      background:radial-gradient(circle at center, rgba(255,87,216,.10), transparent 28%), rgba(5,7,12,.96);
+      transition:opacity .45s ease, visibility .45s ease;
+    }
+    .preloader.hide{opacity:0; visibility:hidden}
+    .preloader-logo{
+      font-family:Orbitron,sans-serif; letter-spacing:.18em; font-size:clamp(2rem,7vw,4rem); color:#fff;
+      text-shadow:0 0 10px rgba(255,64,64,.35),0 0 18px rgba(255,87,216,.28),0 0 26px rgba(119,240,255,.18);
+    }
+    .preloader-bar{width:min(280px,70vw); height:6px; border-radius:999px; overflow:hidden; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08)}
+    .preloader-bar span{
+      display:block; width:42%; height:100%; background:linear-gradient(90deg,var(--red),var(--pink),var(--cyan));
+      box-shadow:0 0 12px rgba(255,87,216,.25),0 0 20px rgba(119,240,255,.20); animation:loaderMove 1.4s ease-in-out infinite;
+    }
     @keyframes loaderMove{0%{transform:translateX(-110%)}50%{transform:translateX(115%)}100%{transform:translateX(-110%)}}
-    .header{position:sticky;top:16px;z-index:40;width:min(calc(100% - 40px),1200px);margin:16px auto 0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;background:rgba(6,10,18,.86);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:30px;box-shadow:0 0 18px rgba(255,64,64,.08),0 0 30px rgba(255,87,216,.08),0 0 42px rgba(119,240,255,.05)}
-    .brand{display:flex;align-items:center;gap:16px;min-width:0;flex:1 1 auto}
-    .brand-mark{width:76px;height:76px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(135deg,var(--red),var(--pink) 55%,var(--cyan));color:#111;font-family:Orbitron,sans-serif;font-weight:800;font-size:1.8rem;box-shadow:0 0 20px rgba(255,87,216,.25),0 0 32px rgba(119,240,255,.18);flex:0 0 auto}
-    .brand-title{font-family:Orbitron,sans-serif;font-size:2rem;letter-spacing:.10em}
+
+    .header{
+      position:sticky; top:16px; z-index:40; width:min(calc(100% - 40px),1200px); margin:16px auto 0;
+      display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 22px;
+      background:rgba(6,10,18,.86); backdrop-filter:blur(16px); border:1px solid var(--line); border-radius:30px;
+      box-shadow:0 0 18px rgba(255,64,64,.08),0 0 30px rgba(255,87,216,.08),0 0 42px rgba(119,240,255,.05);
+    }
+    .brand{display:flex; align-items:center; gap:16px; min-width:0; flex:1 1 auto}
+    .brand-mark{
+      width:76px; height:76px; border-radius:24px; display:grid; place-items:center;
+      background:linear-gradient(135deg,var(--red),var(--pink) 55%,var(--cyan)); color:#111;
+      font-family:Orbitron,sans-serif; font-weight:800; font-size:1.8rem;
+      box-shadow:0 0 20px rgba(255,87,216,.25),0 0 32px rgba(119,240,255,.18); flex:0 0 auto;
+    }
+    .brand-title{font-family:Orbitron,sans-serif; font-size:2rem; letter-spacing:.10em}
     .brand-subtitle{color:var(--muted)}
-    .nav{display:flex;gap:14px;align-items:center;color:rgba(245,247,251,.78)}
+    .nav{display:flex; gap:14px; align-items:center; color:rgba(245,247,251,.78)}
     .nav a:not(.icon-link):hover{color:#fff}
-    .header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}
-    .icon-link{position:relative;display:inline-flex;align-items:center;justify-content:center;width:74px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);box-shadow:0 0 12px rgba(255,87,216,.08),0 0 18px rgba(119,240,255,.05);transition:.25s ease}
-    .icon-link:hover{transform:translateY(-2px);box-shadow:0 0 16px rgba(255,87,216,.14),0 0 24px rgba(119,240,255,.10)}
-    .icon-car{width:54px;height:22px;display:block;filter:drop-shadow(0 0 8px rgba(255,87,216,.22)) drop-shadow(0 0 12px rgba(119,240,255,.12))}
-    .icon-heart{width:22px;height:22px;display:block;filter:drop-shadow(0 0 6px rgba(255,87,216,.20)) drop-shadow(0 0 10px rgba(119,240,255,.14))}
-    .icon-link.active .icon-heart{filter:drop-shadow(0 0 8px rgba(255,64,64,.22)) drop-shadow(0 0 12px rgba(255,87,216,.22)) drop-shadow(0 0 16px rgba(119,240,255,.16))}
-    .cart-count,.fav-count{min-width:22px;height:22px;padding:0 6px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;position:absolute;top:-10px;right:-10px;font-size:.78rem;font-weight:700;background:linear-gradient(135deg,var(--red),var(--pink));color:#fff;box-shadow:0 0 14px rgba(255,87,216,.25);transition:transform .25s ease, box-shadow .25s ease}
-    .cart-count.bump,.fav-count.bump{transform:scale(1.25);box-shadow:0 0 18px rgba(255,64,64,.32),0 0 28px rgba(255,87,216,.28),0 0 36px rgba(119,240,255,.18)}
+    .header-actions{display:flex; align-items:center; gap:10px; flex:0 0 auto}
+
+    .icon-link{
+      position:relative; display:inline-flex; align-items:center; justify-content:center; width:74px; height:42px;
+      border-radius:999px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03);
+      box-shadow:0 0 12px rgba(255,87,216,.08),0 0 18px rgba(119,240,255,.05); transition:.25s ease;
+    }
+    .icon-link:hover{transform:translateY(-2px); box-shadow:0 0 16px rgba(255,87,216,.14),0 0 24px rgba(119,240,255,.10)}
+    .icon-car{width:54px; height:22px; display:block; filter:drop-shadow(0 0 8px rgba(255,87,216,.22)) drop-shadow(0 0 12px rgba(119,240,255,.12))}
+    .icon-heart{width:22px; height:22px; display:block; filter:drop-shadow(0 0 8px rgba(255,87,216,.22)) drop-shadow(0 0 12px rgba(119,240,255,.12))}
+    .icon-link.active .icon-heart{filter:drop-shadow(0 0 10px rgba(255,64,64,.26)) drop-shadow(0 0 16px rgba(255,87,216,.22)) drop-shadow(0 0 22px rgba(119,240,255,.18))}
+    .cart-count,.fav-count{
+      min-width:22px; height:22px; padding:0 6px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center;
+      position:absolute; top:-10px; right:-10px; font-size:.78rem; font-weight:700; background:linear-gradient(135deg,var(--red),var(--pink)); color:#fff;
+      box-shadow:0 0 14px rgba(255,87,216,.25); transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .cart-count.bump,.fav-count.bump{transform:scale(1.25); box-shadow:0 0 18px rgba(255,64,64,.32),0 0 28px rgba(255,87,216,.28),0 0 36px rgba(119,240,255,.18)}
+
     .section{padding:32px 0}
-    .card{border:1px solid var(--line);background:var(--panel);border-radius:28px;backdrop-filter:blur(16px);padding:28px;box-shadow:0 0 14px rgba(255,64,64,.08),0 0 26px rgba(255,87,216,.07),0 0 36px rgba(119,240,255,.05)}
-    .eyebrow{margin:0 0 12px;color:var(--cyan);font-family:Orbitron,sans-serif;letter-spacing:.18em;font-size:.86rem}
-    h1,h2,h3,p{margin:0} h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.02} h2{font-size:clamp(1.8rem,6vw,3rem);line-height:1.06} h3{font-size:1.5rem}
-    .lead{margin-top:14px;color:var(--muted);line-height:1.7}
-    .subnav,.collection-switch{display:flex;gap:12px;flex-wrap:wrap}
-    .subnav{margin-top:18px}
-    .subnav a,.collection-chip{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text)}
-    .collection-switch{margin-top:22px}
-    .collection-chip{cursor:pointer;transition:.2s ease}
-    .collection-chip.active{background:linear-gradient(90deg, rgba(255,64,64,.24), rgba(255,87,216,.22), rgba(119,240,255,.18));box-shadow:0 0 14px rgba(255,87,216,.12)}
-    .collection-title{margin-top:26px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .collection-title p{color:var(--muted);max-width:700px}
-    .merch-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:28px}
-    .merch-card{position:relative;overflow:hidden;border-radius:28px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);backdrop-filter:blur(14px);box-shadow:0 0 14px rgba(255,64,64,.08),0 0 26px rgba(255,87,216,.07),0 0 36px rgba(119,240,255,.05);transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease}
-    .merch-card::before{content:"";position:absolute;inset:0;border-radius:28px;padding:1px;background:linear-gradient(135deg, rgba(255,64,64,.95), rgba(255,87,216,.75), rgba(119,240,255,.75));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.45;pointer-events:none}
+    .card{
+      border:1px solid var(--line); background:var(--panel); border-radius:28px; backdrop-filter:blur(16px); padding:28px;
+      box-shadow:0 0 14px rgba(255,64,64,.08),0 0 26px rgba(255,87,216,.07),0 0 36px rgba(119,240,255,.05);
+    }
+    .eyebrow{margin:0 0 12px; color:var(--cyan); font-family:Orbitron,sans-serif; letter-spacing:.18em; font-size:.86rem}
+    h1,h2,h3,p{margin:0}
+    h1{font-size:clamp(2.2rem,7vw,4rem); line-height:1.02}
+    h2{font-size:clamp(1.8rem,6vw,3rem); line-height:1.06}
+    h3{font-size:1.5rem}
+    .lead{margin-top:14px; color:var(--muted); line-height:1.7}
+    .subnav{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .subnav a{
+      display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:0 18px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04);
+    }
+
+    /* outside card elements */
+    .floating-clouds{
+      display:flex; flex-wrap:wrap; gap:12px; margin:18px 0 0;
+    }
+    .collection-chip{
+      min-height:46px; padding:0 18px; border-radius:999px; border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04); color:var(--text); cursor:pointer; transition:.2s ease;
+    }
+    .collection-chip.active{
+      background:linear-gradient(90deg, rgba(255,64,64,.24), rgba(255,87,216,.22), rgba(119,240,255,.18));
+      box-shadow:0 0 14px rgba(255,87,216,.12);
+    }
+
+    .collection-header{
+      margin-top:18px; display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    }
+    .collection-header p{color:var(--muted); max-width:700px}
+
+    .merch-grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; margin-top:28px;
+    }
+
+    .merch-card{
+      position:relative; overflow:hidden; border-radius:28px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03);
+      backdrop-filter:blur(14px); box-shadow:0 0 14px rgba(255,64,64,.08),0 0 26px rgba(255,87,216,.07),0 0 36px rgba(119,240,255,.05);
+      transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .merch-card::before{
+      content:""; position:absolute; inset:0; border-radius:28px; padding:1px;
+      background:linear-gradient(135deg, rgba(255,64,64,.95), rgba(255,87,216,.75), rgba(119,240,255,.75));
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor; mask-composite:exclude; opacity:.45; pointer-events:none;
+    }
     .merch-card:hover{transform:translateY(-6px)}
     .merch-card.hidden{display:none}
-    .fav-btn{position:absolute;top:14px;right:14px;z-index:5;width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(8,10,18,.55);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);transition:.25s ease}
-    .fav-btn:hover{transform:scale(1.05)} .fav-btn.active{color:#ff6fae;box-shadow:0 0 16px rgba(255,87,216,.22)}
-    .merch-slider{position:relative;overflow:hidden;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.06)}
-    .slider-track{position:relative;width:100%;aspect-ratio:4/5;background:#07080d}
-    .merch-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .35s ease}
+    .fav-btn{
+      position:absolute; top:14px; right:14px; z-index:5; width:42px; height:42px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10); background:rgba(8,10,18,.55); color:#fff; display:grid; place-items:center; cursor:pointer;
+      backdrop-filter:blur(10px); transition:.25s ease;
+    }
+    .fav-btn:hover{transform:scale(1.05)}
+    .fav-btn.active{color:#ff6fae; box-shadow:0 0 16px rgba(255,87,216,.22)}
+
+    .merch-slider{position:relative; overflow:hidden; cursor:pointer; border-bottom:1px solid rgba(255,255,255,.06)}
+    .slider-track{position:relative; width:100%; aspect-ratio:4/5; background:#07080d}
+    .merch-slide{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition:opacity .35s ease}
     .merch-slide.active{opacity:1}
-    .slider-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border:0;border-radius:999px;background:rgba(0,0,0,.38);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer}
-    .slider-btn.prev{left:12px}.slider-btn.next{right:12px}
-    .slider-dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
-    .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35)} .dot.active{background:#fff;box-shadow:0 0 12px rgba(255,87,216,.45)}
+    .slider-btn{
+      position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:42px; height:42px; border:0; border-radius:999px;
+      background:rgba(0,0,0,.38); color:#fff; font-size:1.6rem; line-height:1; cursor:pointer;
+    }
+    .slider-btn.prev{left:12px} .slider-btn.next{right:12px}
+    .slider-dots{position:absolute; left:50%; bottom:12px; transform:translateX(-50%); display:flex; gap:8px; z-index:3}
+    .dot{width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.35)}
+    .dot.active{background:#fff; box-shadow:0 0 12px rgba(255,87,216,.45)}
+
     .merch-body{padding:24px}
-    .merch-topline{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-    .product-badge{display:inline-flex;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);font-family:Orbitron,sans-serif;font-size:.74rem;letter-spacing:.08em}
-    .merch-price{margin-top:8px;font-family:Orbitron,sans-serif;font-size:1.45rem}
-    .merch-note{margin-top:10px;color:var(--muted)}
+    .merch-topline{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px}
+    .product-badge{
+      display:inline-flex; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04);
+      font-family:Orbitron,sans-serif; font-size:.74rem; letter-spacing:.08em;
+    }
+    .merch-price{margin-top:8px; font-family:Orbitron,sans-serif; font-size:1.45rem}
+    .merch-note{margin-top:10px; color:var(--muted)}
     .buy-panel{margin-top:18px}
-    .buy-popup{margin-top:14px;padding:16px;border-radius:20px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);display:none}
+    .buy-popup{
+      margin-top:14px; padding:16px; border-radius:20px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); display:none;
+    }
     .buy-panel.active .buy-popup{display:block}
-    .size-title{display:block;font-size:.95rem;color:var(--muted);margin-bottom:10px}
-    .size-options{display:flex;gap:10px;flex-wrap:wrap}
-    .size-chip{min-width:48px;height:42px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text);font-weight:700;cursor:pointer}
+    .size-title{display:block; font-size:.95rem; color:var(--muted); margin-bottom:10px}
+    .size-options{display:flex; gap:10px; flex-wrap:wrap}
+    .size-chip{
+      min-width:48px; height:42px; padding:0 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04); color:var(--text); font-weight:700; cursor:pointer;
+    }
     .size-chip.active{background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.18), rgba(119,240,255,.18))}
-    .buy-popup-actions,.after-size-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-    .after-size-actions{display:none}.buy-panel.size-selected .after-size-actions{display:flex}
-    .btn{min-height:52px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:#fff;border:1px solid rgba(255,255,255,.16);background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.20), rgba(141,107,255,.20), rgba(119,240,255,.20), rgba(255,64,64,.22));background-size:300% 300%;animation:gradientMove 5s ease infinite;cursor:pointer}
-    .merch-btn{width:100%} .secondary-btn{background:rgba(255,255,255,.06);animation:none}
-    .details-btn{background:none;border:none;color:var(--cyan);font-weight:700;cursor:pointer;padding:0;font-size:1rem}
-    .merch-desc-hidden{max-height:0;overflow:hidden;opacity:0;margin-top:0;line-height:1.65;color:var(--muted);transition:max-height .4s ease, opacity .3s ease, margin-top .3s ease}
-    .merch-card.open .merch-desc-hidden{max-height:260px;opacity:1;margin-top:16px}
-    .toast{position:fixed;right:20px;bottom:20px;display:flex;gap:12px;align-items:center;padding:12px 16px;border-radius:16px;background:rgba(10,14,24,.92);border:1px solid rgba(255,255,255,.12);color:#fff;z-index:999;opacity:0;transform:translateY(20px);pointer-events:none;box-shadow:0 0 18px rgba(255,64,64,.14),0 0 30px rgba(255,87,216,.12),0 0 40px rgba(119,240,255,.10);transition:.25s}
-    .toast.show{opacity:1;transform:translateY(0)}
-    .toast img{width:42px;height:52px;border-radius:8px;object-fit:cover}
-    .toast-info{display:flex;flex-direction:column;font-size:.85rem}
+    .buy-popup-actions,.after-size-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .after-size-actions{display:none}
+    .buy-panel.size-selected .after-size-actions{display:flex}
+    .btn{
+      min-height:52px; padding:0 22px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; color:#fff;
+      border:1px solid rgba(255,255,255,.16); background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.20), rgba(141,107,255,.20), rgba(119,240,255,.20), rgba(255,64,64,.22));
+      background-size:300% 300%; animation:gradientMove 5s ease infinite; cursor:pointer;
+    }
+    .merch-btn{width:100%}
+    .secondary-btn{background:rgba(255,255,255,.06); animation:none}
+    .details-btn{background:none; border:none; color:var(--cyan); font-weight:700; cursor:pointer; padding:0; font-size:1rem}
+    .merch-desc-hidden{
+      max-height:0; overflow:hidden; opacity:0; margin-top:0; line-height:1.65; color:var(--muted); transition:max-height .4s ease, opacity .3s ease, margin-top .3s ease;
+    }
+    .merch-card.open .merch-desc-hidden{max-height:260px; opacity:1; margin-top:16px}
+
+    .toast{
+      position:fixed; right:20px; bottom:20px; display:flex; gap:12px; align-items:center; padding:12px 16px; border-radius:16px;
+      background:rgba(10,14,24,.92); border:1px solid rgba(255,255,255,.12); color:#fff; z-index:999; opacity:0; transform:translateY(20px);
+      pointer-events:none; box-shadow:0 0 18px rgba(255,64,64,.14),0 0 30px rgba(255,87,216,.12),0 0 40px rgba(119,240,255,.10); transition:.25s;
+    }
+    .toast.show{opacity:1; transform:translateY(0)}
+    .toast img{width:42px; height:52px; border-radius:8px; object-fit:cover}
+    .toast-info{display:flex; flex-direction:column; font-size:.85rem}
     .toast-info strong{font-size:.92rem}
     @keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
     @media (max-width: 900px){
-      .header{position:relative;display:block;padding:16px 88px 16px 16px}
-      .brand{display:flex;align-items:center;gap:12px;min-width:0}
-      .brand-mark{width:64px;height:64px;font-size:1.45rem;border-radius:20px;flex:0 0 64px}
-      .brand-title{font-size:1.15rem;line-height:1.05;letter-spacing:.08em}
-      .brand-subtitle{font-size:.92rem;line-height:1.28;display:block;max-width:220px}
+      .header{position:relative; display:block; padding:16px 88px 16px 16px}
+      .brand{display:flex; align-items:center; gap:12px; min-width:0}
+      .brand-mark{width:64px; height:64px; font-size:1.45rem; border-radius:20px; flex:0 0 64px}
+      .brand-title{font-size:1.15rem; line-height:1.05; letter-spacing:.08em}
+      .brand-subtitle{font-size:.92rem; line-height:1.28; display:block; max-width:220px}
       .nav{display:none !important}
-      .header-actions{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:8px;align-items:center}
-      .icon-link{width:40px;height:40px;min-width:40px;border-radius:999px;padding:0;flex:0 0 40px;box-shadow:none}
-      .cart-count,.fav-count{top:-5px;right:-5px;min-width:18px;height:18px;font-size:.65rem;padding:0 4px}
-      .icon-car{width:28px;height:14px}
-      .icon-heart{width:20px;height:20px}
+      .header-actions{position:absolute; top:12px; right:12px; display:flex; flex-direction:column; gap:8px; align-items:center}
+      .icon-link{width:40px; height:40px; min-width:40px; border-radius:999px; padding:0; flex:0 0 40px; box-shadow:none}
+      .cart-count,.fav-count{top:-5px; right:-5px; min-width:18px; height:18px; font-size:.65rem; padding:0 4px}
+      .icon-car{width:28px; height:14px}
+      .icon-heart{width:20px; height:20px}
+      .merch-grid{grid-template-columns:1fr}
     }
-    @media (min-width:900px){.merch-grid{grid-template-columns:repeat(3,1fr)}}
   </style>
 </head>
 <body>
@@ -133,13 +239,12 @@
     <div class="header-actions">
       <a class="icon-link" href="favorites.html" aria-label="Избранное" id="header-fav-link">
         <svg class="icon-heart" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 21s-6.7-4.35-9.33-8C.7 10.5 2.5 6 6.5 6c2.04 0 3.5 1.5 3.5 1.5S11.46 6 13.5 6C17.5 6 19.3 10.5 21.33 13c-2.63 3.65-9.33 8-9.33 8Z"
+          <path d="M12 20.2L10.55 18.88C5.4 14.22 2 11.14 2 7.35C2 4.27 4.42 2 7.5 2C9.24 2 10.91 2.81 12 4.09C13.09 2.81 14.76 2 16.5 2C19.58 2 22 4.27 22 7.35C22 11.14 18.6 14.22 13.45 18.88L12 20.2Z"
                 stroke="url(#heartGradHeader)"
-                stroke-width="1.8"
-                stroke-linejoin="round"
-                stroke-linecap="round"/>
+                stroke-width="2"
+                stroke-linejoin="round"/>
           <defs>
-            <linearGradient id="heartGradHeader" x1="0" y1="0" x2="24" y2="24">
+            <linearGradient id="heartGradHeader" x1="2" y1="2" x2="22" y2="20" gradientUnits="userSpaceOnUse">
               <stop stop-color="#FF4040"/>
               <stop offset="0.55" stop-color="#FF57D8"/>
               <stop offset="1" stop-color="#77F0FF"/>
@@ -177,24 +282,22 @@
         <div class="subnav">
           <a href="shop.html">← Назад в магазин</a>
         </div>
-
-        <div class="collection-switch">
-          <button class="collection-chip active" type="button" data-filter="tee">Тишка</button>
-          <button class="collection-chip" type="button" data-filter="hoodie">Худак</button>
-          <button class="collection-chip" type="button" data-filter="zip">Зипка</button>
-        </div>
-
-        <div class="collection-title">
-          <div>
-            <p class="eyebrow" style="margin-bottom:10px;">КОЛЛЕКЦИЯ</p>
-            <h2 id="collection-name">Фрагменты</h2>
-          </div>
-          <p id="collection-description">Футболки с авторскими принтами BLOCK812. Сейчас в каталоге доступны три позиции коллекции «Фрагменты».</p>
-        </div>
       </div>
-    </section>
 
-    <section class="section">
+      <div class="floating-clouds">
+        <button class="collection-chip active" type="button" data-filter="tee">Тишка</button>
+        <button class="collection-chip" type="button" data-filter="hoodie">Худак</button>
+        <button class="collection-chip" type="button" data-filter="zip">Зипка</button>
+      </div>
+
+      <div class="collection-header">
+        <div>
+          <p class="eyebrow" style="margin-bottom:10px;">КОЛЛЕКЦИЯ</p>
+          <h2 id="collection-name">Фрагменты</h2>
+        </div>
+        <p id="collection-description">Футболки с авторскими принтами BLOCK812. Сейчас в каталоге доступны три позиции коллекции «Фрагменты».</p>
+      </div>
+
       <div class="merch-grid" id="merch-grid">
         <article class="merch-card" data-name="ВАЗ 2105" data-price="3500" data-image="vaz2105-0 2.PNG" data-category="tee">
           <button class="fav-btn" type="button" onclick="toggleFavorite(this, event)">♡</button>
