@@ -92,7 +92,8 @@ p{line-height:1.7}
 .lead{color:var(--muted); font-size:1.06rem; max-width:64ch}
 
 .hero{
-  min-height:calc(100vh - 120px);
+  min-height: auto;
+  padding: 40px 0 20px;
   display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center;
 }
 .hero h1 span,.gradient-text{
