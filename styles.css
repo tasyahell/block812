@@ -735,27 +735,53 @@ h2{
   padding-bottom:14px;
 
   /* скрываем стандартный скролл */
-  scrollbar-width:none;
+  .about-block812-scroll{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:10px;
 }
 
-.gallery-scroll::-webkit-scrollbar{
-  height:6px;
-}
-
-.gallery-scroll::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.gallery-scroll::-webkit-scrollbar-thumb{
-  background:linear-gradient(90deg,#ff4040,#ff57d8,#77f0ff);
-  border-radius:10px;
-  box-shadow:0 0 10px rgba(255,87,216,.5);
-}
-
-.gallery-track{
+.about-block812-track{
   display:flex;
-  gap:16px;
+  flex-wrap:nowrap;
+  gap:14px;
   width:max-content;
+  align-items:flex-start;
+}
+
+.about-photo-card{
+  width:62vw;
+  max-width:240px;
+  flex:0 0 auto;
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.about-photo-card img{
+  width:100%;
+  aspect-ratio:3 / 4;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+.about-photo-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  padding:1px;
+  background:linear-gradient(135deg, #ff3434, #ff4fd8, #39f3ff);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  pointer-events:none;
 }
 
 /* ===== КАРТОЧКИ ФОТО ===== */
