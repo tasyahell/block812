@@ -682,3 +682,47 @@ h2{
 .why-card h3{
   font-size:1.6rem;
 }
+/* ===== РАМКИ ДЛЯ ФОТО ===== */
+
+.gallery img{
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 20px rgba(255,87,216,0.18),
+    0 0 30px rgba(119,240,255,0.12);
+  transition:.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.02);
+  box-shadow:
+    0 0 30px rgba(255,87,216,0.35),
+    0 0 50px rgba(119,240,255,0.25);
+}
+.gallery-scroll{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:10px;
+}
+
+.gallery-track{
+  display:flex;
+  gap:14px;
+  width:max-content;
+}
+
+.gallery-track img{
+  width:62vw;
+  max-width:240px;
+  aspect-ratio:3 / 4;
+  object-fit:cover;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 0 14px rgba(255,52,52,.14),
+    0 0 22px rgba(255,79,216,.12),
+    0 0 30px rgba(57,243,255,.10);
+  flex:0 0 auto;
+}
