@@ -63,11 +63,22 @@
       font-size: 1.25rem;
     }
 
-    @media (max-width: 900px){
-      .shop-utility-link{
-        width: 42px;
-        height: 42px;
-      }
+    @media (max-width:900px){
+  .nav{
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  .nav a:not(.icon-link){
+    display:none;
+  }
+
+  .icon-link{
+    width:46px;
+    height:46px;
+  }
+}
     }
   </style>
 </head>
