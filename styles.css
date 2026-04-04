@@ -1311,3 +1311,9 @@ p{line-height:1.7}
   0%{transform:translateX(-100%)}
   100%{transform:translateX(200%)}
 }
+.page-transition
+.page-transition.hide
+.page-transition__logo
+.page-transition__bar
+.page-transition__bar span
+@keyframes pageLoaderMove
