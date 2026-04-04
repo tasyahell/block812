@@ -788,6 +788,23 @@
     drop-shadow(0 0 18px rgba(255,87,216,.35))
     drop-shadow(0 0 26px rgba(119,240,255,.25));
 }
+      .icon-link.active .icon-heart{
+  animation: heartGlow 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes heartGlow{
+  0%{
+    filter:
+      drop-shadow(0 0 6px rgba(255,87,216,.3))
+      drop-shadow(0 0 10px rgba(119,240,255,.2));
+  }
+  100%{
+    filter:
+      drop-shadow(0 0 12px rgba(255,64,64,.5))
+      drop-shadow(0 0 20px rgba(255,87,216,.45))
+      drop-shadow(0 0 28px rgba(119,240,255,.35));
+  }
+}
   </style>
 </head>
 <body>
