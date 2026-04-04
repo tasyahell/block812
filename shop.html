@@ -1,125 +1,47 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BLOCK812 Shop</title>
-  <meta name="description" content="Страница магазина BLOCK812 с реальными фото мерча и принтов." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="page-transition" id="page-transition">
-  <div class="page-transition__logo">BLOCK812</div>
-  <div class="page-transition__bar"><span></span></div>
-</div>
-  <header class="header">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">812</span>
-      <span>
-        <span class="brand-title">BLOCK812</span><br>
-        <span class="brand-subtitle">движ • автосервис • магазин • тату</span>
-      </span>
-    </a>
-    <nav class="nav">
-      <a href="index.html">Главная</a>
-      <a href="service.html">Автосервис</a>
-      <a href="shop.html">Магазин</a>
-      <a href="tattoo.html">Тату</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-    <button class="menu-btn" aria-label="Меню">☰</button>
-  </header>
-
-  
-<main class="container">
-  <section class="page-hero section">
-    <div class="card">
-      <p class="eyebrow">BLOCK812 / SHOP</p>
-      <h1>Магазин <span class="gradient-text">как дроп-площадка бренда</span></h1>
-      <p class="lead">Страница магазина построена не как скучный каталог, а как площадка для релизов, лимитированных коллекций, мерча, аксессуаров и брендовых предметов.</p>
-      <div class="subnav">
-        <a href="#catalog">Каталог</a>
-        <a href="#drops">Дропы</a>
-        <a href="#gallery">Фото</a>
-        <a href="#news">Новости</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="catalog">
-    <p class="eyebrow">КАТАЛОГ</p>
-    <h2>Пример товарных категорий</h2>
-    <div class="services-grid grid-3" style="margin-top:28px">
-      <a class="feature-link" href="merch.html">
-        <article class="service-card">
-          <h3>Мерч BLOCK812</h3>
-          <p>Футболки, худи, кепки, стикеры и фирменные коллекции бренда.</p>
-          <span class="text-link">Открыть каталог мерча →</span>
-        </article>
-      </a>
-      <article class="service-card"><h3>Автоаксессуары</h3><p>Предметы для комьюнити: наклейки, элементы оформления, практичные мелочи.</p></article>
-      <article class="service-card"><h3>Тематические товары</h3><p>Лимитированные релизы, арт-объекты, коллаборации и сезонные дропы.</p></article>
-    </div>
-  </section>
-
-  <section class="section" id="drops">
-    <p class="eyebrow">ДРОПЫ И ЛИМИТКИ</p>
-    <h2>Сильная сторона магазина — подача релизов</h2>
-    <div class="grid-3" style="margin-top:28px">
-      <article class="feature"><span class="badge">DROP 01</span><h3 style="margin-top:14px">Night Neon</h3><p>Коллекция с темным визуалом, светящимися деталями и городским вайбом.</p></article>
-      <article class="feature"><span class="badge">DROP 02</span><h3 style="margin-top:14px">Garage Series</h3><p>Линейка, вдохновленная автосервисом и технической эстетикой BLOCK812.</p></article>
-      <article class="feature"><span class="badge">DROP 03</span><h3 style="margin-top:14px">Ink Edition</h3><p>Капсула, связанная с тату-направлением и графическими мотивами студии.</p></article>
-    </div>
-  </section>
-
-  <section class="section" id="gallery">
-    <p class="eyebrow">ФОТО МАГАЗИНА</p>
-    <h2>Добавила реальные фото принтов и съемок для страницы магазина</h2>
-    <div class="shop-gallery" style="margin-top:28px">
-      <figure class="photo-real"><img src="assets/shop/shop_art_red.jpg" alt="Красный принт с автомобилем на футболке"><figcaption class="photo-caption">Красный арт-принт как отдельный товар и визуал коллекции.</figcaption></figure>
-      <figure class="photo-real"><img src="assets/shop/shop_art_gray.jpg" alt="Серый принт с автомобилем на футболке"><figcaption class="photo-caption">Графика с серой машиной и розовыми акцентами.</figcaption></figure>
-      <figure class="photo-real"><img src="assets/shop/shop_art_green.jpg" alt="Зеленый принт с автомобилем на футболке"><figcaption class="photo-caption">Зеленый вариант принта с теплым закатным фоном.</figcaption></figure>
-
-      <figure class="photo-real wide"><img src="assets/shop/shop_life_van.jpg" alt="Модель в футболке BLOCK812 возле фургона"><figcaption class="photo-caption">Лайфстайл-съемка: принт на спине в городской среде.</figcaption></figure>
-      <figure class="photo-real"><img src="assets/shop/shop_life_car_1.jpg" alt="Футболка BLOCK812 с машинным принтом в салоне автомобиля"><figcaption class="photo-caption">Съемка мерча внутри автомобиля.</figcaption></figure>
-      <figure class="photo-real"><img src="assets/shop/shop_life_car_2.jpg" alt="Футболка BLOCK812 с принтом в салоне автомобиля"><figcaption class="photo-caption">Еще один ракурс, показывающий посадку и графику.</figcaption></figure>
-      <figure class="photo-real"><img src="assets/shop/shop_life_car_3.jpg" alt="Футболка BLOCK812 с зеленым принтом в салоне автомобиля"><figcaption class="photo-caption">Вариант с зеленым артом в темной съемке.</figcaption></figure>
-      <figure class="photo-real"><img src="assets/shop/shop_life_car_4.jpg" alt="Футболка BLOCK812 с зеленым принтом и розовыми ботинками"><figcaption class="photo-caption">Детали образа и мерча в автомобильном интерьере.</figcaption></figure>
-      <figure class="photo-real"><img src="assets/shop/shop_life_car_5.jpg" alt="Футболка BLOCK812 с зеленым принтом в салоне автомобиля"><figcaption class="photo-caption">Кадр изнутри салона с акцентом на спинный принт.</figcaption></figure>
-      <figure class="photo-real wide"><img src="assets/shop/shop_life_tractor.jpg" alt="Модель в футболке BLOCK812 рядом с красным трактором"><figcaption class="photo-caption">Теплая съемка на улице для красного принта и финального лукбука.</figcaption></figure>
-    </div>
-  </section>
-
-  <section class="section" id="news">
-    <p class="eyebrow">НОВОСТИ МАГАЗИНА</p>
-    <h2>Релизы и анонсы</h2>
-    <div class="news-grid" style="margin-top:28px">
-      <article class="news-card"><span class="news-meta">RELEASE</span><h3>Запуск нового дропа</h3><p>Отдельный анонс с таймером, тизером и переходом в каталог.</p></article>
-      <article class="news-card"><span class="news-meta">COLLAB</span><h3>Коллаборация с художником</h3><p>Ограниченный релиз с отдельной графической подачей внутри сайта.</p></article>
-      <article class="news-card"><span class="news-meta">SALE</span><h3>Неделя специальных цен</h3><p>Промо-блок на избранные товары или прошлые коллекции.</p></article>
-    </div>
-  </section>
-</main>
-
-
-  
-<footer class="footer" id="contacts">
-  <div>
-    <div class="brand-title">BLOCK812</div>
-    <p>Неоновое пространство бренда, где движ, автосервис, магазин и тату соединяются в один живой проект.</p>
-  </div>
-  <div class="footer-links">
-    <a href="tel:+79295612001">8 929 561-20-01</a>
-    <a href="mailto:block812cda@gmail.com">block812cda@gmail.com</a>
-    <a href="https://t.me/tasyatttooo" target="_blank" rel="noopener noreferrer">Telegram</a>
-    <a href="https://vk.ru/club237263685" target="_blank" rel="noopener noreferrer">VK</a>
-    <a href="https://yandex.ru/maps/org/tasya_ttt_ooo/72614967061?si=ht46ne8tf0uf006nqydhjxcbdg" target="_blank" rel="noopener noreferrer">Яндекс Карты</a>
-  </div>
-</footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BLOCK812 Shop</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet"><style>
+:root{--bg:#07080d;--panel:rgba(12,16,28,.78);--line:rgba(255,255,255,.10);--text:#f5f7fb;--muted:rgba(245,247,251,.72);--red:#ff4040;--pink:#ff57d8;--cyan:#77f0ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:
+radial-gradient(circle at 12% 12%, rgba(255,87,216,.12), transparent 22%),
+radial-gradient(circle at 88% 18%, rgba(119,240,255,.10), transparent 22%),
+radial-gradient(circle at 70% 82%, rgba(255,64,64,.10), transparent 28%),
+linear-gradient(180deg,#06070b 0%, #0a0d16 100%);min-height:100vh}
+a{text-decoration:none;color:inherit}button{font:inherit}
+.container{width:min(calc(100% - 40px),1200px);margin:0 auto}
+.preloader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;background:radial-gradient(circle at center, rgba(255,87,216,.10), transparent 28%), rgba(5,7,12,.96);transition:opacity .45s ease, visibility .45s ease}
+.preloader.hide{opacity:0;visibility:hidden}
+.preloader-logo{font-family:Orbitron,sans-serif;letter-spacing:.18em;font-size:clamp(2rem,7vw,4rem);color:#fff;text-shadow:0 0 10px rgba(255,64,64,.35),0 0 18px rgba(255,87,216,.28),0 0 26px rgba(119,240,255,.18)}
+.preloader-bar{width:min(280px,70vw);height:6px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
+.preloader-bar span{display:block;width:42%;height:100%;background:linear-gradient(90deg,var(--red),var(--pink),var(--cyan));animation:loaderMove 1.4s ease-in-out infinite}
+@keyframes loaderMove{0%{transform:translateX(-110%)}50%{transform:translateX(115%)}100%{transform:translateX(-110%)}}
+.header{position:sticky;top:16px;z-index:40;width:min(calc(100% - 40px),1200px);margin:16px auto 0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;background:rgba(6,10,18,.86);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:30px;box-shadow:0 0 18px rgba(255,64,64,.08),0 0 30px rgba(255,87,216,.08),0 0 42px rgba(119,240,255,.05)}
+.brand{display:flex;align-items:center;gap:16px}.brand-mark{width:76px;height:76px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(135deg,var(--red),var(--pink) 55%,var(--cyan));color:#111;font-family:Orbitron,sans-serif;font-weight:800;font-size:1.8rem}
+.brand-title{font-family:Orbitron,sans-serif;font-size:2rem;letter-spacing:.10em}.brand-subtitle{color:var(--muted)}
+.nav{display:flex;gap:14px;align-items:center;color:rgba(245,247,251,.78)} .nav a:not(.icon-link):hover{color:#fff}
+.icon-link{position:relative;display:inline-flex;align-items:center;justify-content:center;width:74px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);transition:.25s ease}
+.icon-link:hover{transform:translateY(-2px)}
+.icon-car{width:54px;height:22px;display:block;filter:drop-shadow(0 0 8px rgba(255,87,216,.22)) drop-shadow(0 0 12px rgba(119,240,255,.12))}
+.cart-count,.fav-count{min-width:22px;height:22px;padding:0 6px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;position:absolute;top:-10px;right:-10px;font-size:.78rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--red),var(--pink));box-shadow:0 0 14px rgba(255,87,216,.25);transition:transform .25s ease}
+.cart-count.bump,.fav-count.bump{transform:scale(1.25)}
+.section{padding:32px 0}
+.card{border:1px solid var(--line);background:var(--panel);border-radius:28px;backdrop-filter:blur(16px);padding:28px;box-shadow:0 0 14px rgba(255,64,64,.08),0 0 26px rgba(255,87,216,.07),0 0 36px rgba(119,240,255,.05)}
+.eyebrow{margin:0 0 12px;color:var(--cyan);font-family:Orbitron,sans-serif;letter-spacing:.18em;font-size:.86rem}
+h1,h2,h3,p{margin:0}h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.02}h2{font-size:clamp(1.8rem,6vw,3rem);line-height:1.06}h3{font-size:1.3rem}
+.lead{margin-top:14px;color:var(--muted);line-height:1.7}.subnav{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.subnav a,.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.btn{min-height:52px;padding:0 22px;color:#fff;border:1px solid rgba(255,255,255,.16);cursor:pointer;background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.20), rgba(141,107,255,.20), rgba(119,240,255,.20), rgba(255,64,64,.22));background-size:300% 300%;animation:gradientMove 5s ease infinite}
+.btn.secondary{background:rgba(255,255,255,.06);animation:none}
+@keyframes gradientMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.toast{position:fixed;right:20px;bottom:20px;display:flex;gap:12px;align-items:center;padding:12px 16px;border-radius:16px;background:rgba(10,14,24,.92);border:1px solid rgba(255,255,255,.12);color:#fff;z-index:999;opacity:0;transform:translateY(20px);pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translateY(0)}.toast img{width:42px;height:52px;border-radius:8px;object-fit:cover}.toast-info{display:flex;flex-direction:column;font-size:.85rem}
+@media (max-width:900px){.nav{display:none}}
+.grid3{display:grid;grid-template-columns:1fr;gap:24px;margin-top:28px}.link-card{position:relative;overflow:hidden;border-radius:28px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);backdrop-filter:blur(14px);padding:26px;box-shadow:0 0 14px rgba(255,64,64,.08),0 0 26px rgba(255,87,216,.07),0 0 36px rgba(119,240,255,.05);transition:transform .3s ease}.link-card:hover{transform:translateY(-6px)}.link-card p{margin-top:12px;color:var(--muted);line-height:1.65}.link-card .btn{margin-top:18px}@media (min-width:960px){.grid3{grid-template-columns:repeat(3,1fr)}}</style></head><body><div class="preloader" id="preloader"><div class="preloader-logo">BLOCK812</div><div class="preloader-bar"><span></span></div></div>
+<header class="header"><a class="brand" href="index.html"><span class="brand-mark">812</span><span><span class="brand-title">BLOCK812</span><br><span class="brand-subtitle">движ • автосервис • магазин • тату</span></span></a><nav class="nav"><a href="index.html">Главная</a><a href="service.html">Автосервис</a><a href="shop.html">Магазин</a><a href="tattoo.html">Тату</a><a class="icon-link" href="favorites.html" aria-label="Избранное"><svg class="icon-car" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20.2L10.55 18.88C5.4 14.22 2 11.14 2 7.35C2 4.27 4.42 2 7.5 2C9.24 2 10.91 2.81 12 4.09C13.09 2.81 14.76 2 16.5 2C19.58 2 22 4.27 22 7.35C22 11.14 18.6 14.22 13.45 18.88L12 20.2Z" stroke="url(#heartGrad)" stroke-width="2" stroke-linejoin="round"/><defs><linearGradient id="heartGrad" x1="2" y1="2" x2="22" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#FF4040"/><stop offset="0.55" stop-color="#FF57D8"/><stop offset="1" stop-color="#77F0FF"/></linearGradient></defs></svg><span class="fav-count" id="fav-count">0</span></a><a class="icon-link" href="cart.html" aria-label="Корзина"><svg class="icon-car" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 58L36 44H77L98 31H129L149 42H176L194 50V62H184C181 71 173 77 164 77C155 77 147 71 144 62H84C81 71 73 77 64 77C55 77 47 71 44 62H20V58Z" stroke="url(#cartGrad)" stroke-width="4" stroke-linejoin="round"/><circle cx="64" cy="62" r="12" stroke="url(#cartGrad)" stroke-width="4"/><circle cx="164" cy="62" r="12" stroke="url(#cartGrad)" stroke-width="4"/><path d="M47 44H92M104 31V43M132 42H156" stroke="url(#cartGrad)" stroke-width="4" stroke-linecap="round"/><defs><linearGradient id="cartGrad" x1="20" y1="30" x2="194" y2="78" gradientUnits="userSpaceOnUse"><stop stop-color="#FF4040"/><stop offset="0.55" stop-color="#FF57D8"/><stop offset="1" stop-color="#77F0FF"/></linearGradient></defs></svg><span class="cart-count" id="cart-count">0</span></a></nav></header>
+<main class="container"><section class="section"><div class="card"><p class="eyebrow">BLOCK812 / SHOP</p><h1>Магазин</h1><p class="lead">Корзина и избранное общие для мерча, автозапчастей и тематических товаров.</p></div></section><section class="section"><p class="eyebrow">РАЗДЕЛЫ</p><h2>Каталог направлений</h2><div class="grid3"><a class="link-card" href="merch.html"><h3>Мерч</h3><p>Футболки, коллекции и дропы BLOCK812.</p><span class="btn">Открыть мерч</span></a><a class="link-card" href="parts.html"><h3>Автозапчасти</h3><p>Будущая страница с уже подключенными корзиной и избранным.</p><span class="btn">Открыть запчасти</span></a><a class="link-card" href="themed.html"><h3>Тематические товары</h3><p>Будущая страница с уже подключенными корзиной и избранным.</p><span class="btn">Открыть раздел</span></a></div></section></main><div class="toast" id="toast"><img id="toast-img" src="" alt=""><div class="toast-info"><strong id="toast-name"></strong><span id="toast-size"></span></div></div><script>
+function hidePreloader(){const el=document.getElementById('preloader');if(el)el.classList.add('hide')}window.addEventListener('load',()=>setTimeout(hidePreloader,450));
+function getCart(){return JSON.parse(localStorage.getItem('block812_cart')||'[]')}function saveCart(cart){localStorage.setItem('block812_cart',JSON.stringify(cart));updateCounts(true,false)}
+function getFav(){return JSON.parse(localStorage.getItem('block812_fav')||'[]')}function saveFav(fav){localStorage.setItem('block812_fav',JSON.stringify(fav));updateCounts(false,true)}
+function updateCounts(ac,af){const cart=getCart(),fav=getFav(),ce=document.getElementById('cart-count'),fe=document.getElementById('fav-count');if(ce){ce.textContent=cart.reduce((s,i)=>s+(i.qty||1),0);if(ac){ce.classList.add('bump');setTimeout(()=>ce.classList.remove('bump'),260)}}if(fe){fe.textContent=fav.length;if(af){fe.classList.add('bump');setTimeout(()=>fe.classList.remove('bump'),260)}}}
+function showToast(image,name,text){const t=document.getElementById('toast');if(!t)return;document.getElementById('toast-img').src=image||'';document.getElementById('toast-name').textContent=name||'';document.getElementById('toast-size').textContent=text||'';t.classList.add('show');clearTimeout(window.__tt);window.__tt=setTimeout(()=>t.classList.remove('show'),2000)}
+updateCounts(false,false);
+</script></body></html>
