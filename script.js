@@ -41,6 +41,7 @@ document.querySelectorAll('a[href]').forEach(link => {
     e.preventDefault();
 
     pageTransition?.classList.remove('hide');
+pageTransition.style.background = 'red';
 
     setTimeout(() => {
       window.location.href = this.href;
