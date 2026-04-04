@@ -619,8 +619,21 @@
     }
 
     @media (max-width:900px){
-      .nav{display:none}
-    }
+  .nav{
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  .nav a:not(.icon-link){
+    display:none;
+  }
+
+  .icon-link{
+    width:46px;
+    height:46px;
+  }
+}
 
     @media (min-width:960px){
       .merch-grid{
