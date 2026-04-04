@@ -83,13 +83,13 @@ img{max-width:100%; display:block}
 
 .section{padding:30px 20px}
 .eyebrow{
-  margin:0 0 8px; color:var(--cyan); font-weight:700; font-size:.78rem; letter-spacing:.26em;
+  margin:0 0 10px; color:var(--cyan); font-weight:700; font-size:.1rem; letter-spacing:.18em;
 }
 h1,h2,h3{margin:0}
 h1{font-size:clamp(3rem,7vw,6rem); line-height:.95}
 h2{font-size:clamp(2rem,5vw,3.7rem); line-height:1}
 p{line-height:1.7}
-.lead{color:var(--muted); font-size:1.06rem; max-width:64ch}
+.lead{color:var(--muted); font-size:95rem; max-width:64ch}
 
 .hero{
   min-height: auto;
