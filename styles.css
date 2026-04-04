@@ -575,3 +575,89 @@ p{line-height:1.7}
     grid-template-columns:repeat(3, 1fr);
   }
 }
+
+
+/* ===== FIXES FOR INDEX CONTENT BLOCKS ===== */
+
+/* "Почему BLOCK812" — plain text, not cards */
+.why-grid{
+  display:block;
+  gap:0;
+}
+.why-card{
+  padding:0;
+  border:none;
+  background:transparent;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  box-shadow:none;
+  border-radius:0;
+  overflow:visible;
+}
+.why-card::before{
+  display:none;
+}
+.why-card + .why-card{
+  margin-top:24px;
+}
+.why-card h3{
+  margin:0 0 10px;
+  font-size:1.9rem;
+}
+.why-card p{
+  color:var(--text);
+  opacity:.9;
+}
+
+/* "Краткое знакомство" — normal photo strip on desktop, horizontal scroll on phone */
+.about-block812-scroll{
+  overflow-x:visible;
+  overflow-y:visible;
+  padding-bottom:0;
+}
+.about-block812-track{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:20px;
+  width:auto;
+}
+.about-photo-card{
+  width:auto;
+  max-width:none;
+}
+.about-photo-card img{
+  aspect-ratio:4 / 5;
+  max-height:380px;
+}
+
+@media (max-width: 860px){
+  .about-block812-scroll{
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:10px;
+  }
+
+  .about-block812-track{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:14px;
+    width:max-content;
+    align-items:flex-start;
+  }
+
+  .about-photo-card{
+    width:62vw;
+    max-width:240px;
+    flex:0 0 auto;
+  }
+
+  .about-photo-card img{
+    aspect-ratio:3 / 4;
+    max-height:none;
+  }
+
+  .why-card h3{
+    font-size:1.6rem;
+  }
+}
