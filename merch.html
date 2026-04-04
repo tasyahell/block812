@@ -618,20 +618,91 @@
       100%{background-position:0% 50%}
     }
 
-    @media (max-width:900px){
+    @media (max-width: 900px){
+  .header{
+    position: relative;
+    display: block;
+    padding: 16px 88px 16px 16px;
+  }
+
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .brand-mark{
+    width: 64px;
+    height: 64px;
+    font-size: 1.45rem;
+    border-radius: 20px;
+    flex: 0 0 64px;
+  }
+
+  .brand-title{
+    font-size: 1.15rem;
+    line-height: 1.05;
+    letter-spacing: .08em;
+  }
+
+  .brand-subtitle{
+    font-size: .92rem;
+    line-height: 1.28;
+    display: block;
+    max-width: 220px;
+  }
+
   .nav{
-    display:flex;
-    gap:10px;
-    align-items:center;
+    display: none !important;
   }
 
-  .nav a:not(.icon-link){
-    display:none;
+  .header-actions{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
   }
 
+  .shop-utility-link,
+  .icon-link,
+  .menu-btn{
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 999px;
+    padding: 0;
+    flex: 0 0 40px;
+  }
+
+  .shop-utility-link,
   .icon-link{
-    width:46px;
-    height:46px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.10);
+    box-shadow: none;
+  }
+
+  .shop-utility-count,
+  .cart-count,
+  .fav-count{
+    top: -5px;
+    right: -5px;
+    min-width: 18px;
+    height: 18px;
+    font-size: .65rem;
+    padding: 0 4px;
+  }
+
+  .icon-car{
+    width: 28px;
+    height: 14px;
+  }
+
+  .icon-heart{
+    font-size: .95rem;
   }
 }
 
