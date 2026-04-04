@@ -1,1277 +1,232 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#06070b">
-  <title>BLOCK812 Merch</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#07080d;
-      --panel:rgba(12,16,28,.78);
-      --line:rgba(255,255,255,.10);
-      --text:#f5f7fb;
-      --muted:rgba(245,247,251,.72);
-      --red:#ff4040;
-      --pink:#ff57d8;
-      --cyan:#77f0ff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06070b">
+<title>BLOCK812 Merch</title>
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 
-    body{
-      margin:0;
-      font-family:Inter,system-ui,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 12% 12%, rgba(255,87,216,.12), transparent 22%),
-        radial-gradient(circle at 88% 18%, rgba(119,240,255,.10), transparent 22%),
-        radial-gradient(circle at 70% 82%, rgba(255,64,64,.10), transparent 28%),
-        linear-gradient(180deg,#06070b 0%, #0a0d16 100%);
-      min-height:100vh;
-    }
+<style>
+:root{
+  --bg:#07080d;
+  --panel:rgba(12,16,28,.78);
+  --line:rgba(255,255,255,.10);
+  --text:#f5f7fb;
+  --red:#ff4040;
+  --pink:#ff57d8;
+  --cyan:#77f0ff;
+}
 
-    a{text-decoration:none;color:inherit}
-    button{font:inherit}
+body{
+  margin:0;
+  font-family:Inter;
+  background:var(--bg);
+  color:var(--text);
+}
 
-    .container{
-      width:min(calc(100% - 40px),1200px);
-      margin:0 auto;
-    }
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px;
+  margin:16px;
+  border-radius:30px;
+  background:rgba(6,10,18,.9);
+  border:1px solid var(--line);
+}
 
-    .preloader{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      gap:18px;
-      background:
-        radial-gradient(circle at center, rgba(255,87,216,.10), transparent 28%),
-        rgba(5,7,12,.96);
-      transition:opacity .45s ease, visibility .45s ease;
-    }
+.header-actions{
+  display:flex;
+  gap:12px;
+}
 
-    .preloader.hide{
-      opacity:0;
-      visibility:hidden;
-    }
+.icon-link{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+}
 
-    .preloader-logo{
-      font-family:Orbitron,sans-serif;
-      letter-spacing:.18em;
-      font-size:clamp(2rem,7vw,4rem);
-      color:#fff;
-      text-shadow:
-        0 0 10px rgba(255,64,64,.35),
-        0 0 18px rgba(255,87,216,.28),
-        0 0 26px rgba(119,240,255,.18);
-    }
-
-    .preloader-bar{
-      width:min(280px, 70vw);
-      height:6px;
-      border-radius:999px;
-      overflow:hidden;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .preloader-bar span{
-      display:block;
-      width:42%;
-      height:100%;
-      background:linear-gradient(90deg,var(--red),var(--pink),var(--cyan));
-      box-shadow:0 0 12px rgba(255,87,216,.25),0 0 20px rgba(119,240,255,.20);
-      animation:loaderMove 1.4s ease-in-out infinite;
-    }
-
-    @keyframes loaderMove{
-      0%{transform:translateX(-110%)}
-      50%{transform:translateX(115%)}
-      100%{transform:translateX(-110%)}
-    }
-
-    .header{
-      position:sticky;
-      top:16px;
-      z-index:40;
-      width:min(calc(100% - 40px),1200px);
-      margin:16px auto 0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:18px 22px;
-      background:rgba(6,10,18,.86);
-      backdrop-filter:blur(16px);
-      border:1px solid var(--line);
-      border-radius:30px;
-      box-shadow:
-        0 0 18px rgba(255,64,64,.08),
-        0 0 30px rgba(255,87,216,.08),
-        0 0 42px rgba(119,240,255,.05);
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:16px;
-    }
-
-    .brand-mark{
-      width:76px;
-      height:76px;
-      border-radius:24px;
-      display:grid;
-      place-items:center;
-      background:linear-gradient(135deg,var(--red),var(--pink) 55%,var(--cyan));
-      color:#111;
-      font-family:Orbitron,sans-serif;
-      font-weight:800;
-      font-size:1.8rem;
-      box-shadow:0 0 20px rgba(255,87,216,.25),0 0 32px rgba(119,240,255,.18);
-    }
-
-    .brand-title{
-      font-family:Orbitron,sans-serif;
-      font-size:2rem;
-      letter-spacing:.10em;
-    }
-
-    .brand-subtitle{
-      color:var(--muted);
-    }
-
-    .nav{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      color:rgba(245,247,251,.78);
-    }
-
-    .nav a:not(.icon-link):hover{
-      color:#fff;
-    }
-
-    .icon-link{
-      position:relative;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:74px;
-      height:42px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
-      box-shadow:0 0 12px rgba(255,87,216,.08),0 0 18px rgba(119,240,255,.05);
-      transition:.25s ease;
-    }
-
-    .icon-link:hover{
-      transform:translateY(-2px);
-      box-shadow:0 0 16px rgba(255,87,216,.14),0 0 24px rgba(119,240,255,.10);
-    }
-
-    .icon-car{
-      width:54px;
-      height:22px;
-      display:block;
-      filter:drop-shadow(0 0 8px rgba(255,87,216,.22)) drop-shadow(0 0 12px rgba(119,240,255,.12));
-    }
-
-    .icon-heart{
+/* HEART */
+.icon-heart{
   width:22px;
   height:22px;
-  display:block;
   filter:
-    drop-shadow(0 0 6px rgba(255,87,216,.20))
-    drop-shadow(0 0 10px rgba(119,240,255,.14));
+    drop-shadow(0 0 6px rgba(255,87,216,.3))
+    drop-shadow(0 0 10px rgba(119,240,255,.2));
 }
 
-    .cart-count,
-    .fav-count{
-      min-width:22px;
-      height:22px;
-      padding:0 6px;
-      border-radius:999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      position:absolute;
-      top:-10px;
-      right:-10px;
-      font-size:.78rem;
-      font-weight:700;
-      background:linear-gradient(135deg,var(--red),var(--pink));
-      color:#fff;
-      box-shadow:0 0 14px rgba(255,87,216,.25);
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-
-    .cart-count.bump,
-    .fav-count.bump{
-      transform:scale(1.25);
-      box-shadow:
-        0 0 18px rgba(255,64,64,.32),
-        0 0 28px rgba(255,87,216,.28),
-        0 0 36px rgba(119,240,255,.18);
-    }
-
-    .section{
-      padding:32px 0;
-    }
-
-    .card{
-      border:1px solid var(--line);
-      background:var(--panel);
-      border-radius:28px;
-      backdrop-filter:blur(16px);
-      padding:28px;
-      box-shadow:
-        0 0 14px rgba(255,64,64,.08),
-        0 0 26px rgba(255,87,216,.07),
-        0 0 36px rgba(119,240,255,.05);
-    }
-
-    .eyebrow{
-      margin:0 0 12px;
-      color:var(--cyan);
-      font-family:Orbitron,sans-serif;
-      letter-spacing:.18em;
-      font-size:.86rem;
-    }
-
-    h1,h2,h3,p{margin:0}
-
-    h1{
-      font-size:clamp(2.2rem,7vw,4rem);
-      line-height:1.02;
-    }
-
-    h2{
-      font-size:clamp(1.8rem,6vw,3rem);
-      line-height:1.06;
-    }
-
-    h3{
-      font-size:1.5rem;
-    }
-
-    .lead{
-      margin-top:14px;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .subnav{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-
-    .subnav a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:46px;
-      padding:0 18px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-    }
-
-    .merch-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:24px;
-      margin-top:28px;
-    }
-
-    .merch-card{
-      position:relative;
-      overflow:hidden;
-      border-radius:28px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
-      backdrop-filter:blur(14px);
-      box-shadow:
-        0 0 14px rgba(255,64,64,.08),
-        0 0 26px rgba(255,87,216,.07),
-        0 0 36px rgba(119,240,255,.05);
-      transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-    }
-
-    .merch-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:28px;
-      padding:1px;
-      background:linear-gradient(135deg, rgba(255,64,64,.95), rgba(255,87,216,.75), rgba(119,240,255,.75));
-      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor;
-      mask-composite:exclude;
-      opacity:.45;
-      pointer-events:none;
-    }
-
-    .merch-card:hover{
-      transform:translateY(-6px);
-    }
-
-    .fav-btn{
-      position:absolute;
-      top:14px;
-      right:14px;
-      z-index:5;
-      width:42px;
-      height:42px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(8,10,18,.55);
-      color:#fff;
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      backdrop-filter:blur(10px);
-      transition:.25s ease;
-    }
-
-    .fav-btn:hover{
-      transform:scale(1.05);
-    }
-
-    .fav-btn.active{
-      color:#ff6fae;
-      box-shadow:0 0 16px rgba(255,87,216,.22);
-    }
-
-    .merch-slider{
-      position:relative;
-      overflow:hidden;
-      cursor:pointer;
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-
-    .slider-track{
-      position:relative;
-      width:100%;
-      aspect-ratio:4/5;
-      background:#07080d;
-    }
-
-    .merch-slide{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      opacity:0;
-      transition:opacity .35s ease;
-    }
-
-    .merch-slide.active{
-      opacity:1;
-    }
-
-    .slider-btn{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      z-index:3;
-      width:42px;
-      height:42px;
-      border:0;
-      border-radius:999px;
-      background:rgba(0,0,0,.38);
-      color:#fff;
-      font-size:1.6rem;
-      line-height:1;
-      cursor:pointer;
-    }
-
-    .slider-btn.prev{left:12px}
-    .slider-btn.next{right:12px}
-
-    .slider-dots{
-      position:absolute;
-      left:50%;
-      bottom:12px;
-      transform:translateX(-50%);
-      display:flex;
-      gap:8px;
-      z-index:3;
-    }
-
-    .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:rgba(255,255,255,.35);
-    }
-
-    .dot.active{
-      background:#fff;
-      box-shadow:0 0 12px rgba(255,87,216,.45);
-    }
-
-    .merch-body{
-      padding:24px;
-    }
-
-    .merch-topline{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-
-    .product-badge{
-      display:inline-flex;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      font-family:Orbitron,sans-serif;
-      font-size:.74rem;
-      letter-spacing:.08em;
-    }
-
-    .merch-price{
-      margin-top:8px;
-      font-family:Orbitron,sans-serif;
-      font-size:1.45rem;
-    }
-
-    .merch-note{
-      margin-top:10px;
-      color:var(--muted);
-    }
-
-    .buy-panel{
-      margin-top:18px;
-    }
-
-    .buy-popup{
-      margin-top:14px;
-      padding:16px;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);
-      display:none;
-    }
-
-    .buy-panel.active .buy-popup{
-      display:block;
-    }
-
-    .size-title{
-      display:block;
-      font-size:.95rem;
-      color:var(--muted);
-      margin-bottom:10px;
-    }
-
-    .size-options{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .size-chip{
-      min-width:48px;
-      height:42px;
-      padding:0 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:700;
-      cursor:pointer;
-    }
-
-    .size-chip.active{
-      background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.18), rgba(119,240,255,.18));
-    }
-
-    .buy-popup-actions,
-    .after-size-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-
-    .after-size-actions{
-      display:none;
-    }
-
-    .buy-panel.size-selected .after-size-actions{
-      display:flex;
-    }
-
-    .btn{
-      min-height:52px;
-      padding:0 22px;
-      border-radius:999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      border:1px solid rgba(255,255,255,.16);
-      background:linear-gradient(90deg, rgba(255,64,64,.22), rgba(255,87,216,.20), rgba(141,107,255,.20), rgba(119,240,255,.20), rgba(255,64,64,.22));
-      background-size:300% 300%;
-      animation:gradientMove 5s ease infinite;
-      cursor:pointer;
-    }
-
-    .merch-btn{
-      width:100%;
-    }
-
-    .secondary-btn{
-      background:rgba(255,255,255,.06);
-      animation:none;
-    }
-
-    .details-btn{
-      background:none;
-      border:none;
-      color:var(--cyan);
-      font-weight:700;
-      cursor:pointer;
-      padding:0;
-      font-size:1rem;
-    }
-
-    .merch-desc-hidden{
-      max-height:0;
-      overflow:hidden;
-      opacity:0;
-      margin-top:0;
-      line-height:1.65;
-      color:var(--muted);
-      transition:max-height .4s ease, opacity .3s ease, margin-top .3s ease;
-    }
-
-    .merch-card.open .merch-desc-hidden{
-      max-height:260px;
-      opacity:1;
-      margin-top:16px;
-    }
-
-    .toast{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      padding:12px 16px;
-      border-radius:16px;
-      background:rgba(10,14,24,.92);
-      border:1px solid rgba(255,255,255,.12);
-      color:#fff;
-      z-index:999;
-      opacity:0;
-      transform:translateY(20px);
-      pointer-events:none;
-      box-shadow:
-        0 0 18px rgba(255,64,64,.14),
-        0 0 30px rgba(255,87,216,.12),
-        0 0 40px rgba(119,240,255,.10);
-      transition:.25s;
-    }
-
-    .toast.show{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    .toast img{
-      width:42px;
-      height:52px;
-      border-radius:8px;
-      object-fit:cover;
-    }
-
-    .toast-info{
-      display:flex;
-      flex-direction:column;
-      font-size:.85rem;
-    }
-
-    .toast-info strong{
-      font-size:.92rem;
-    }
-
-    @keyframes gradientMove{
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-    }
-
-    @media (max-width: 900px){
-  .header{
-    position: relative;
-    display: block;
-    padding: 16px 88px 16px 16px;
-  }
-
-  .brand{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-  }
-
-  .brand-mark{
-    width: 64px;
-    height: 64px;
-    font-size: 1.45rem;
-    border-radius: 20px;
-    flex: 0 0 64px;
-  }
-
-  .brand-title{
-    font-size: 1.15rem;
-    line-height: 1.05;
-    letter-spacing: .08em;
-  }
-
-  .brand-subtitle{
-    font-size: .92rem;
-    line-height: 1.28;
-    display: block;
-    max-width: 220px;
-  }
-
-  .nav{
-    display: none !important;
-  }
-
-  .header-actions{
-    position: absolute;
-    top: 4px;
-    right: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .shop-utility-link,
-  .icon-link,
-  .menu-btn{
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    border-radius: 999px;
-    padding: 0;
-    flex: 0 0 40px;
-  }
-
-  .shop-utility-link,
-  .icon-link{
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.10);
-    box-shadow: none;
-  }
-
-  .shop-utility-count,
-  .cart-count,
-  .fav-count{
-    top: -5px;
-    right: -5px;
-    min-width: 18px;
-    height: 18px;
-    font-size: .65rem;
-    padding: 0 4px;
-  }
-
-  .icon-car{
-    width: 28px;
-    height: 14px;
-  }
-
-  .icon-heart{
-    font-size: .95rem;
-  }
+/* COUNT */
+.count{
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  background:linear-gradient(135deg,var(--red),var(--pink));
+  border-radius:50%;
+  font-size:12px;
+  padding:3px 6px;
 }
 
-    @media (min-width:960px){
-      .merch-grid{
-        grid-template-columns:repeat(@media (max-width: 900px){
-  .header{
-    display:grid;
-    grid-template-columns: 1fr auto;
-    align-items:center;
-    gap:12px;
-    padding:16px 18px;
-  }
-
-  .brand{
-    min-width:0;
-  }
-
-  .brand-title{
-    font-size:1.2rem;
-  }
-
-  .brand-subtitle{
-    font-size:.95rem;
-    line-height:1.35;
-  }
-
-  .brand-mark{
-    width:64px;
-    height:64px;
-    font-size:1.45rem;
-  }
-
-  .nav{
-    display:none !important;
-  }
-
-  .header-actions{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    justify-self:end;
-  }
-
-  .shop-utility-link,
-  .icon-link{
-    width:42px;
-    height:42px;
-    flex:0 0 42px;
-  }
-
-  .shop-utility-count,
-  .cart-count,
-  .fav-count{
-    top:-6px;
-    right:-6px;
-    min-width:18px;
-    height:18px;
-    font-size:.68rem;
-    padding:0 5px;
-  }
-
-  .menu-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:42px;
-    height:42px;
-    flex:0 0 42px;
-  }
-}  
- .icon-heart{
-  width: 20px;
-  height: 20px;
-  display: block;
-  filter: drop-shadow(0 0 6px rgba(255,87,216,.3))
-          drop-shadow(0 0 10px rgba(119,240,255,.2));
-}     
-      .icon-link.active .icon-heart{
-  filter:
-    drop-shadow(0 0 10px rgba(255,64,64,.4))
-    drop-shadow(0 0 18px rgba(255,87,216,.35))
-    drop-shadow(0 0 26px rgba(119,240,255,.25));
-}
-      .icon-link.active .icon-heart{
-  animation: heartGlow 1.6s ease-in-out infinite alternate;
+/* CATEGORY */
+.categories{
+  display:flex;
+  gap:12px;
+  padding:0 16px;
 }
 
-@keyframes heartGlow{
-  0%{
-    filter:
-      drop-shadow(0 0 6px rgba(255,87,216,.3))
-      drop-shadow(0 0 10px rgba(119,240,255,.2));
-  }
-  100%{
-    filter:
-      drop-shadow(0 0 12px rgba(255,64,64,.5))
-      drop-shadow(0 0 20px rgba(255,87,216,.45))
-      drop-shadow(0 0 28px rgba(119,240,255,.35));
-  }
+.cat-btn{
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  cursor:pointer;
 }
-  </style>
+
+.cat-btn.active{
+  background:linear-gradient(90deg,var(--red),var(--pink),var(--cyan));
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:16px;
+  position:relative;
+}
+
+/* FAVORITE BTN */
+.fav-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+}
+
+/* SIZE */
+.size{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.size button{
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+}
+
+.size button.active{
+  background:var(--pink);
+}
+</style>
 </head>
+
 <body>
-  <div class="preloader" id="preloader">
-    <div class="preloader-logo">BLOCK812</div>
-    <div class="preloader-bar"><span></span></div>
-  </div>
 
-  <header class="header">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">812</span>
-    <span>
-      <span class="brand-title">BLOCK812</span><br>
-      <span class="brand-subtitle">движ • автосервис • магазин • тату</span>
-    </span>
-  </a>
-
-  <nav class="nav">
-    <a href="index.html">Главная</a>
-    <a href="service.html">Автосервис</a>
-    <a href="shop.html">Магазин</a>
-    <a href="tattoo.html">Тату</a>
-  </nav>
+<header class="header">
+  <div>BLOCK812</div>
 
   <div class="header-actions">
-    <a class="icon-link" href="favorites.html" aria-label="Избранное">
-      <svg class="icon-heart" viewBox="0 0 24 24" fill="none">
-  <path d="M12 21s-6.7-4.35-9.33-8C.7 10.5 2.5 6 6.5 6c2.04 0 3.5 1.5 3.5 1.5S11.46 6 13.5 6C17.5 6 19.3 10.5 21.33 13c-2.63 3.65-9.33 8-9.33 8Z"
-        stroke="url(#heartGrad)"
-        stroke-width="1.8"
-        stroke-linejoin="round"
-        stroke-linecap="round"/>
-  <defs>
-    <linearGradient id="heartGrad" x1="0" y1="0" x2="24" y2="24">
-      <stop stop-color="#FF4040"/>
-      <stop offset="0.55" stop-color="#FF57D8"/>
-      <stop offset="1" stop-color="#77F0FF"/>
-    </linearGradient>
-  </defs>
-</svg>
-    </a>
 
-    <a class="icon-link" href="cart.html" aria-label="Корзина">
-      <svg class="icon-car" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 58L36 44H77L98 31H129L149 42H176L194 50V62H184C181 71 173 77 164 77C155 77 147 71 144 62H84C81 71 73 77 64 77C55 77 47 71 44 62H20V58Z" stroke="url(#cartGrad)" stroke-width="4" stroke-linejoin="round"/>
-        <circle cx="64" cy="62" r="12" stroke="url(#cartGrad)" stroke-width="4"/>
-        <circle cx="164" cy="62" r="12" stroke="url(#cartGrad)" stroke-width="4"/>
-        <path d="M47 44H92M104 31V43M132 42H156" stroke="url(#cartGrad)" stroke-width="4" stroke-linecap="round"/>
+    <a class="icon-link" href="favorites.html">
+      <svg class="icon-heart" viewBox="0 0 24 24" fill="none">
+        <path d="M12 21s-6.7-4.35-9.33-8C.7 10.5 2.5 6 6.5 6c2.04 0 3.5 1.5 3.5 1.5S11.46 6 13.5 6C17.5 6 19.3 10.5 21.33 13c-2.63 3.65-9.33 8-9.33 8Z"
+        stroke="url(#g)" stroke-width="1.8"/>
         <defs>
-          <linearGradient id="cartGrad" x1="20" y1="30" x2="194" y2="78" gradientUnits="userSpaceOnUse">
+          <linearGradient id="g">
             <stop stop-color="#FF4040"/>
-            <stop offset="0.55" stop-color="#FF57D8"/>
+            <stop offset="0.5" stop-color="#FF57D8"/>
             <stop offset="1" stop-color="#77F0FF"/>
           </linearGradient>
         </defs>
       </svg>
-      <span class="cart-count" id="cart-count">0</span>
+      <span class="count" id="fav-count">0</span>
     </a>
+
+    <a class="icon-link" href="cart.html">🛒</a>
+
   </div>
 </header>
-  <main class="container">
-    <section class="section">
-      <div class="card">
-        <p class="eyebrow">BLOCK812 / MERCH</p>
-        <h1>Каталог мерча</h1>
-        <p class="lead">Нажми <b>Купить</b>, чтобы открыть выбор размера и кнопку <b>Подробнее</b>. Нажми <b>Подробнее</b> или на фото, чтобы раскрыть карточку товара.</p>
-        <div class="subnav">
-  <a href="shop.html">← Назад в магазин</a>
+
+<div class="categories">
+  <button class="cat-btn active">Футболки</button>
+  <button class="cat-btn">Худи</button>
+  <button class="cat-btn">Зипки</button>
 </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <p class="eyebrow">КОЛЛЕКЦИЯ</p>
-      <h2>Три футболки в каталоге</h2>
+<h2 style="padding:16px;">Коллекция BLOCK812</h2>
 
-      <div class="merch-grid">
-        <article class="merch-card" data-name="ВАЗ 2105" data-price="3500" data-image="vaz2105-0 2.PNG">
-          <button class="fav-btn" type="button" onclick="toggleFavorite(this, event)">♡</button>
+<div class="grid">
 
-          <div class="merch-slider" onclick="toggleDetailsFromImage(this)">
-            <button class="slider-btn prev" type="button" onclick="event.stopPropagation()">‹</button>
-            <div class="slider-track">
-              <img src="vaz2105-0 2.PNG" alt="ВАЗ 2105 фото 1" class="merch-slide active">
-              <img src="vaz2105-1 2.PNG" alt="ВАЗ 2105 фото 2" class="merch-slide">
-            </div>
-            <button class="slider-btn next" type="button" onclick="event.stopPropagation()">›</button>
-            <div class="slider-dots"><span class="dot active"></span><span class="dot"></span></div>
-          </div>
+<div class="card" data-name="ВАЗ 2105" data-price="3500">
+<button class="fav-btn" onclick="toggleFavorite(this)">♡</button>
 
-          <div class="merch-body">
-            <div class="merch-topline">
-              <span class="product-badge">Предзаказ</span>
-              <span class="product-badge">до 5 дней</span>
-            </div>
-            <h3>ВАЗ 2105</h3>
-            <p class="merch-price">3 500 ₽</p>
-            <p class="merch-note">Футболка с авторским принтом ВАЗ 2105.</p>
+<h3>ВАЗ 2105</h3>
 
-            <div class="merch-desc-hidden">
-              Фрагмент улицы, застывший в металле.<br>
-              Эстетика повседневности, превращённая в графику.<br><br>
-              Лимитированный дроп BLOCK812.<br><br>
-              Предзаказ. Производство до 5 дней.
-            </div>
+<div class="size">
+<button onclick="selectSize(this)">S</button>
+<button onclick="selectSize(this)">M</button>
+<button onclick="selectSize(this)">L</button>
+</div>
 
-            <div class="buy-panel">
-              <button class="btn merch-btn" type="button" onclick="toggleBuyPanel(this, event)">Купить</button>
-              <div class="buy-popup">
-                <span class="size-title">Выбери размер</span>
-                <div class="size-options">
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
-                </div>
+</div>
 
-                <div class="buy-popup-actions">
-                  <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
-                </div>
+</div>
 
-                <div class="after-size-actions">
-                  <button class="btn merch-btn" type="button" onclick="addToCart(this, event, 'ВАЗ 2105', 3500, 'vaz2105-0 2.PNG')">В корзину</button>
-                  <button class="btn merch-btn secondary-btn" type="button" onclick="addToCartAndContinue(this, event, 'ВАЗ 2105', 3500, 'vaz2105-0 2.PNG')">Продолжить покупки</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+<script>
+function getFav(){return JSON.parse(localStorage.getItem('fav')||'[]')}
+function saveFav(f){localStorage.setItem('fav',JSON.stringify(f))}
 
-        <article class="merch-card" data-name="ВАЗ 2102" data-price="3500" data-image="vaz2102-0 2.PNG">
-          <button class="fav-btn" type="button" onclick="toggleFavorite(this, event)">♡</button>
-
-          <div class="merch-slider" onclick="toggleDetailsFromImage(this)">
-            <button class="slider-btn prev" type="button" onclick="event.stopPropagation()">‹</button>
-            <div class="slider-track">
-              <img src="vaz2102-0 2.PNG" alt="ВАЗ 2102 фото 1" class="merch-slide active">
-              <img src="vaz2102-1 2.PNG" alt="ВАЗ 2102 фото 2" class="merch-slide">
-              <img src="vaz2102-2 2.PNG" alt="ВАЗ 2102 фото 3" class="merch-slide">
-            </div>
-            <button class="slider-btn next" type="button" onclick="event.stopPropagation()">›</button>
-            <div class="slider-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
-          </div>
-
-          <div class="merch-body">
-            <div class="merch-topline">
-              <span class="product-badge">Предзаказ</span>
-              <span class="product-badge">до 5 дней</span>
-            </div>
-            <h3>ВАЗ 2102</h3>
-            <p class="merch-price">3 500 ₽</p>
-            <p class="merch-note">Футболка с авторским принтом ВАЗ 2102.</p>
-
-            <div class="merch-desc-hidden">
-              Движение, которое не заканчивается.<br>
-              Старые формы — новое восприятие.<br><br>
-              Фрагмент из жизни города в ткани.<br><br>
-              Предзаказ. Производство до 5 дней.
-            </div>
-
-            <div class="buy-panel">
-              <button class="btn merch-btn" type="button" onclick="toggleBuyPanel(this, event)">Купить</button>
-              <div class="buy-popup">
-                <span class="size-title">Выбери размер</span>
-                <div class="size-options">
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
-                </div>
-
-                <div class="buy-popup-actions">
-                  <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
-                </div>
-
-                <div class="after-size-actions">
-                  <button class="btn merch-btn" type="button" onclick="addToCart(this, event, 'ВАЗ 2102', 3500, 'vaz2102-0 2.PNG')">В корзину</button>
-                  <button class="btn merch-btn secondary-btn" type="button" onclick="addToCartAndContinue(this, event, 'ВАЗ 2102', 3500, 'vaz2102-0 2.PNG')">Продолжить покупки</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="merch-card" data-name="ВАЗ 2101" data-price="3500" data-image="vaz2101-0 2.PNG">
-          <button class="fav-btn" type="button" onclick="toggleFavorite(this, event)">♡</button>
-
-          <div class="merch-slider" onclick="toggleDetailsFromImage(this)">
-            <button class="slider-btn prev" type="button" onclick="event.stopPropagation()">‹</button>
-            <div class="slider-track">
-              <img src="vaz2101-0 2.PNG" alt="ВАЗ 2101 фото 1" class="merch-slide active">
-              <img src="vaz2101-1 2.PNG" alt="ВАЗ 2101 фото 2" class="merch-slide">
-              <img src="vaz2101-2 2.PNG" alt="ВАЗ 2101 фото 3" class="merch-slide">
-            </div>
-            <button class="slider-btn next" type="button" onclick="event.stopPropagation()">›</button>
-            <div class="slider-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
-          </div>
-
-          <div class="merch-body">
-            <div class="merch-topline">
-              <span class="product-badge">Предзаказ</span>
-              <span class="product-badge">до 5 дней</span>
-            </div>
-            <h3>ВАЗ 2101</h3>
-            <p class="merch-price">3 500 ₽</p>
-            <p class="merch-note">Футболка с авторским принтом ВАЗ 2101.</p>
-
-            <div class="merch-desc-hidden">
-              Классика, которая не устаревает.<br>
-              Символ, разобранный на детали и собранный заново.<br><br>
-              BLOCK812 — это не про машины, это про состояние.<br><br>
-              Предзаказ. Производство до 5 дней.
-            </div>
-
-            <div class="buy-panel">
-              <button class="btn merch-btn" type="button" onclick="toggleBuyPanel(this, event)">Купить</button>
-              <div class="buy-popup">
-                <span class="size-title">Выбери размер</span>
-                <div class="size-options">
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">S</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">M</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">L</button>
-                  <button class="size-chip" type="button" onclick="selectSize(this, event)">XL</button>
-                </div>
-
-                <div class="buy-popup-actions">
-                  <button class="details-btn" type="button" onclick="toggleDetails(this, event)">Подробнее</button>
-                </div>
-
-                <div class="after-size-actions">
-                  <button class="btn merch-btn" type="button" onclick="addToCart(this, event, 'ВАЗ 2101', 3500, 'vaz2101-0 2.PNG')">В корзину</button>
-                  <button class="btn merch-btn secondary-btn" type="button" onclick="addToCartAndContinue(this, event, 'ВАЗ 2101', 3500, 'vaz2101-0 2.PNG')">Продолжить покупки</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <div class="toast" id="toast">
-    <img id="toast-img" src="" alt="">
-    <div class="toast-info">
-      <strong id="toast-name"></strong>
-      <span id="toast-size"></span>
-    </div>
-  </div>
-
-  <script>
-    function hidePreloader(){
-      const el = document.getElementById('preloader');
-      if(el) el.classList.add('hide');
-    }
-    window.addEventListener('load', () => setTimeout(hidePreloader, 450));
-
-    function getCart(){
-      return JSON.parse(localStorage.getItem('block812_cart') || '[]');
-    }
-
-    function saveCart(cart){
-      localStorage.setItem('block812_cart', JSON.stringify(cart));
-      updateCounts(true, false);
-    }
-
-    function getFav(){
-      return JSON.parse(localStorage.getItem('block812_fav') || '[]');
-    }
-
-    function saveFav(fav){
-      localStorage.setItem('block812_fav', JSON.stringify(fav));
-      updateCounts(false, true);
-    }
-
-    function updateCounts(animateCart, animateFav){
-      const cart = getCart();
-      const fav = getFav();
-
-      const cartEl = document.getElementById('cart-count');
-      const favEl = document.getElementById('fav-count');
-
-      if(cartEl){
-        const cartTotal = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
-        cartEl.textContent = cartTotal;
-        if(animateCart){
-          cartEl.classList.add('bump');
-          clearTimeout(window.__cartBump);
-          window.__cartBump = setTimeout(() => cartEl.classList.remove('bump'), 260);
-        }
-      }
-
-      if(favEl){
-        favEl.textContent = fav.length;
-        if(animateFav){
-          favEl.classList.add('bump');
-          clearTimeout(window.__favBump);
-          window.__favBump = setTimeout(() => favEl.classList.remove('bump'), 260);
-        }
-      }
-    }
-
-    function showToast(item, customText){
-      const toast = document.getElementById('toast');
-      document.getElementById('toast-img').src = item.image;
-      document.getElementById('toast-name').textContent = item.name;
-      document.getElementById('toast-size').textContent = customText || ('Размер: ' + item.size);
-      toast.classList.add('show');
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
-    }
-
-    document.querySelectorAll('.merch-slider').forEach(slider => {
-      const slides = slider.querySelectorAll('.merch-slide');
-      const dots = slider.querySelectorAll('.dot');
-      const prevBtn = slider.querySelector('.prev');
-      const nextBtn = slider.querySelector('.next');
-      let current = 0;
-
-      function showSlide(index){
-        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-      }
-
-      if(prevBtn){
-        prevBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          current = (current - 1 + slides.length) % slides.length;
-          showSlide(current);
-        });
-      }
-
-      if(nextBtn){
-        nextBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          current = (current + 1) % slides.length;
-          showSlide(current);
-        });
-      }
-    });
-
-    function toggleBuyPanel(button, event){
-      event.stopPropagation();
-      button.closest('.buy-panel').classList.toggle('active');
-    }
-
-    function toggleDetails(button, event){
-      event.stopPropagation();
-      button.closest('.merch-card').classList.toggle('open');
-    }
-
-    function toggleDetailsFromImage(slider){
-      slider.closest('.merch-card').classList.toggle('open');
-    }
-
-    function selectSize(button, event){
-      event.stopPropagation();
-      const group = button.closest('.size-options');
-      const panel = button.closest('.buy-panel');
-      group.querySelectorAll('.size-chip').forEach(chip => chip.classList.remove('active'));
-      button.classList.add('active');
-      panel.classList.add('size-selected');
-    }
-
-    function buildItem(button, name, price, image){
-      const card = button.closest('.merch-card');
-      const activeSize = card.querySelector('.size-chip.active');
-
-      if(!activeSize){
-        alert('Сначала выбери размер');
-        return null;
-      }
-
-      return {
-        id: Date.now(),
-        name,
-        price,
-        image,
-        size: activeSize.textContent.trim(),
-        qty: 1
-      };
-    }
-
-    function addToCart(button, event, name, price, image){
-      event.stopPropagation();
-      const item = buildItem(button, name, price, image);
-      if(!item) return;
-
-      const cart = getCart();
-      cart.push(item);
-      saveCart(cart);
-      window.location.href = 'cart.html';
-    }
-
-    function addToCartAndContinue(button, event, name, price, image){
-      event.stopPropagation();
-      const item = buildItem(button, name, price, image);
-      if(!item) return;
-
-      const cart = getCart();
-      cart.push(item);
-      saveCart(cart);
-      button.closest('.buy-panel').classList.remove('active');
-      showToast(item);
-    }
-
-    function toggleFavorite(button, event){
-  event.stopPropagation();
-  const card = button.closest('.merch-card');
-  const name = card.dataset.name;
-  const price = Number(card.dataset.price);
-  const image = card.dataset.image;
-
-  let fav = getFav();
-  const exists = fav.find(item => item.name === name);
-
-  if(exists){
-    fav = fav.filter(item => item.name !== name);
-    button.classList.remove('active');
-    button.textContent = '♡';
-    saveFav(fav);
-    showToast({ image, name, size: '' }, 'Убрано из избранного');
-  } else {
-    fav.push({name, price, image});
-    button.classList.add('active');
-    button.textContent = '♥';
-    saveFav(fav);
-    showToast({ image, name, size: '' }, 'Добавлено в избранное');
-  }
-
-  updateFavIcon();
+function selectSize(btn){
+btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('active'))
+btn.classList.add('active')
 }
 
-function syncFavorites(){
-  const fav = getFav();
-  document.querySelectorAll('.merch-card').forEach(card => {
-    const name = card.dataset.name;
-    const btn = card.querySelector('.fav-btn');
-    const exists = fav.find(item => item.name === name);
+function toggleFavorite(btn){
+const card=btn.closest('.card')
+const name=card.dataset.name
 
-    if(exists){
-      btn.classList.add('active');
-      btn.textContent = '♥';
-    } else {
-      btn.classList.remove('active');
-      btn.textContent = '♡';
-    }
-  });
+const sizeBtn=card.querySelector('.active')
+if(!sizeBtn){alert('Выбери размер');return}
+
+const size=sizeBtn.textContent
+
+let fav=getFav()
+const exists=fav.find(i=>i.name===name&&i.size===size)
+
+if(exists){
+fav=fav.filter(i=>!(i.name===name&&i.size===size))
+btn.textContent='♡'
+}else{
+fav.push({name,size})
+btn.textContent='♥'
 }
 
-updateCounts(false, false);
-syncFavorites();
-updateFavIcon();
-    function updateFavIcon(){
-  const fav = getFav();
-  const link = document.querySelector('.icon-link[href="favorites.html"]');
-
-  if(!link) return;
-
-  if(fav.length > 0){
-    link.classList.add('active');
-  } else {
-    link.classList.remove('active');
-  }
+saveFav(fav)
+update()
 }
 
-updateFavIcon();
-  </script>
+function update(){
+document.getElementById('fav-count').textContent=getFav().length
+}
+
+update()
+</script>
+
 </body>
 </html>
