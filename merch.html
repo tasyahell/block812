@@ -1210,48 +1210,66 @@
     }
 
     function toggleFavorite(button, event){
-      event.stopPropagation();
-      const card = button.closest('.merch-card');
-      const name = card.dataset.name;
-      const price = Number(card.dataset.price);
-      const image = card.dataset.image;
+  event.stopPropagation();
+  const card = button.closest('.merch-card');
+  const name = card.dataset.name;
+  const price = Number(card.dataset.price);
+  const image = card.dataset.image;
 
-      let fav = getFav();
-      const exists = fav.find(item => item.name === name);
+  let fav = getFav();
+  const exists = fav.find(item => item.name === name);
 
-      if(exists){
-        fav = fav.filter(item => item.name !== name);
-        button.classList.remove('active');
-        button.textContent = '♡';
-        saveFav(fav);
-        showToast({ image, name, size: '' }, 'Убрано из избранного');
-      } else {
-        fav.push({name, price, image});
-        button.classList.add('active');
-        button.textContent = '♥';
-        saveFav(fav);
-        showToast({ image, name, size: '' }, 'Добавлено в избранное');
-      }
+  if(exists){
+    fav = fav.filter(item => item.name !== name);
+    button.classList.remove('active');
+    button.textContent = '♡';
+    saveFav(fav);
+    showToast({ image, name, size: '' }, 'Убрано из избранного');
+  } else {
+    fav.push({name, price, image});
+    button.classList.add('active');
+    button.textContent = '♥';
+    saveFav(fav);
+    showToast({ image, name, size: '' }, 'Добавлено в избранное');
+  }
+
+  updateFavIcon();
+}
+
+function syncFavorites(){
+  const fav = getFav();
+  document.querySelectorAll('.merch-card').forEach(card => {
+    const name = card.dataset.name;
+    const btn = card.querySelector('.fav-btn');
+    const exists = fav.find(item => item.name === name);
+
+    if(exists){
+      btn.classList.add('active');
+      btn.textContent = '♥';
+    } else {
+      btn.classList.remove('active');
+      btn.textContent = '♡';
     }
+  });
+}
 
-    function syncFavorites(){
-      const fav = getFav();
-      document.querySelectorAll('.merch-card').forEach(card => {
-        const name = card.dataset.name;
-        const btn = card.querySelector('.fav-btn');
-        const exists = fav.find(item => item.name === name);
-        if(exists){
-          btn.classList.add('active');
-          btn.textContent = '♥';
-        } else {
-          btn.classList.remove('active');
-          btn.textContent = '♡';
-        }
-      });
-    }
+updateCounts(false, false);
+syncFavorites();
+updateFavIcon();
+    function updateFavIcon(){
+  const fav = getFav();
+  const link = document.querySelector('.icon-link[href="favorites.html"]');
 
-    updateCounts(false, false);
-    syncFavorites();
+  if(!link) return;
+
+  if(fav.length > 0){
+    link.classList.add('active');
+  } else {
+    link.classList.remove('active');
+  }
+}
+
+updateFavIcon();
   </script>
 </body>
 </html>
