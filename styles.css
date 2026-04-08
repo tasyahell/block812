@@ -857,20 +857,37 @@ h2{
   border-radius:20px !important;
 }
 
-.about-photo-card::before{
-  content:"" !important;
-  position:absolute !important;
-  inset:0 !important;
-  border-radius:20px !important;
-  padding:1px !important;
-  background:linear-gradient(135deg, #ff3434, #ff4fd8, #39f3ff) !important;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0) !important;
-  -webkit-mask-composite:xor !important;
-          mask-composite:exclude !important;
-  pointer-events:none !important;
-  display:block !important;
+/* НЕОНОВАЯ РАМКА КАК РАНЬШЕ */
+
+.about-photo-card{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  background:#0b0f1a;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 0 18px rgba(255,80,200,0.25),
+    0 0 28px rgba(80,200,255,0.2);
+}
+
+.about-photo-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:20px;
+  display:block;
+}
+
+/* мягкое неоновое свечение */
+.about-photo-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  pointer-events:none;
+  box-shadow:
+    inset 0 0 20px rgba(255,80,200,0.2),
+    inset 0 0 30px rgba(80,200,255,0.15);
 }
 
 @media (min-width: 861px){
