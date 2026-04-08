@@ -872,10 +872,12 @@ h2{
 
 .about-photo-card img{
   width:100%;
-  height:100%;
+  height:auto;
+  aspect-ratio:3 / 4;
   object-fit:cover;
-  border-radius:20px;
+  object-position:center;
   display:block;
+  border-radius:20px;
 }
 
 /* мягкое неоновое свечение */
