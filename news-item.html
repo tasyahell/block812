@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Новость</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="supabase.js"></script>
+</head>
+<body style="background:#0b0b0f;color:white;font-family:sans-serif">
+
+<div id="item"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
+
+async function loadItem() {
+  const { data } = await supabase.from('news').select('*').eq('id', id).single();
+
+  document.getElementById('item').innerHTML = `
+    <h1>${data.title}</h1>
+    <p>${data.content}</p>
+  `;
+}
+
+loadItem();
+</script>
+
+</body>
+</html>

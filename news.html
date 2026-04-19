@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Новости</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="supabase.js"></script>
+</head>
+<body style="background:#0b0b0f;color:white;font-family:sans-serif">
+
+<h1>Новости</h1>
+<div id="news"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const category = params.get('category');
+
+async function loadNews() {
+  let query = supabase.from('news').select('*').order('created_at', {ascending:false});
+  if(category) query = query.eq('category', category);
+
+  const { data } = await query;
+
+  const container = document.getElementById('news');
+  container.innerHTML = data.map(n => `
+    <div style="margin:20px 0;padding:10px;border:1px solid #444">
+      <h3>${n.title}</h3>
+      <p>${n.content.slice(0,100)}...</p>
+      <a href="news-item.html?id=${n.id}">Открыть</a>
+    </div>
+  `).join('');
+}
+
+loadNews();
+</script>
+
+</body>
+</html>
